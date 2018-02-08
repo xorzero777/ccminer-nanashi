@@ -5,8 +5,7 @@ Based on Christian Buchner's &amp; Christian H.'s CUDA project, no more active o
 
 Fork by tpruvot@github with X14,X15,X17,Blake256,BlakeCoin,Lyra2RE,Skein,ZR5 and others, check the [README.txt](README.txt)
 
-   BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo
-   [![tip for next commit](https://tip4commit.com/projects/927.svg)](https://tip4commit.com/github/tpruvot/ccminer)
+   GRLC donation address: GVQ1sXh9xDefzFHVmFGPTi6NVHjhEQfa7S
 
 A part of the recent algos were originally written by [djm34](https://github.com/djm34).
 
