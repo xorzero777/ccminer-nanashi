@@ -13,7 +13,13 @@
 #include "cuda_helper.h"
 
 #if __CUDA_ARCH__ < 300
-#define __shfl(x, y) (x)
+#define __shfl(x, y, z) (x)
+#endif
+
+#if CUDA_VERSION >= 9000 && __CUDA_ARCH__ >= 300
+#define __shfl2(var, srcLane) __shfl_sync(0xFFFFFFFFu, var, srcLane)
+#else
+#define __shfl2 __shfl
 #endif
 
 #if __CUDA_ARCH__ < 320 && !defined(__ldg4)
@@ -36,11 +42,11 @@ typedef struct __align__(128) ulonglong8to16 {
 	ulonglong2to8 lo, hi;
 } ulonglong8to16;
 
-typedef struct __align__(256) ulonglong16to32 {
+typedef struct __align__(128) ulonglong16to32{
 	ulonglong8to16 lo, hi;
 } ulonglong16to32;
 
-typedef struct __align__(512) ulonglong32to64 {
+typedef struct __align__(128) ulonglong32to64{
 	ulonglong16to32 lo, hi;
 } ulonglong32to64;
 
@@ -79,7 +85,7 @@ struct __align__(128) ulong8 {
 };
 typedef __device_builtin__ struct ulong8 ulong8;
 
-typedef struct __align__(256) ulonglong16 {
+typedef struct __align__(128) ulonglong16{
 	ulonglong4 s0, s1, s2, s3, s4, s5, s6, s7;
 } ulonglong16;
 
@@ -89,10 +95,10 @@ typedef struct __align__(16) uint28 {
 typedef uint2x4 uint28; /* name deprecated */
 
 typedef struct __builtin_align__(32) uint48 {
-		uint4 s0,s1;
+	uint4 s0,s1;
 } uint48;
 
-typedef struct __align__(256) uint4x16 {
+typedef struct __builtin_align__(128) uint4x16{
 	uint4 s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15;
 } uint4x16;
 
@@ -368,10 +374,10 @@ static __forceinline__ __device__ void operator^= (ulonglong2to8 &a, const ulong
 
 static __forceinline__ __device__ void operator+= (uint4 &a, uint4 b) { a = a + b; }
 static __forceinline__ __device__ void operator+= (uchar4 &a, uchar4 b) { a = a + b; }
-static __forceinline__ __device__  __host__ void operator+= (uint8 &a, const uint8 &b) { a = a + b; }
-static __forceinline__ __device__  __host__ void operator+= (uint16 &a, const uint16 &b) { a = a + b; }
-static __forceinline__ __device__   void operator+= (uint2_16 &a, const uint2_16 &b) { a = a + b; }
-static __forceinline__ __device__   void operator^= (uint2_16 &a, const uint2_16 &b) { a = a + b; }
+static __forceinline__ __device__ __host__ void operator+= (uint8 &a, const uint8 &b) { a = a + b; }
+static __forceinline__ __device__ __host__ void operator+= (uint16 &a, const uint16 &b) { a = a + b; }
+static __forceinline__ __device__ void operator+= (uint2_16 &a, const uint2_16 &b) { a = a + b; }
+static __forceinline__ __device__ void operator^= (uint2_16 &a, const uint2_16 &b) { a = a + b; }
 
 static __forceinline__ __device__ void operator+= (ulong8 &a, const ulong8 &b) { a = a + b; }
 static __forceinline__ __device__ void operator+= (ulonglong16 &a, const ulonglong16 &b) { a = a + b; }
@@ -551,14 +557,14 @@ static __device__ __forceinline__ uint28 shuffle4(const uint28 &var, int lane)
 {
 #if __CUDA_ARCH__ >= 300
 	uint28 res;
-	res.x.x = __shfl(var.x.x, lane);
-	res.x.y = __shfl(var.x.y, lane);
-	res.y.x = __shfl(var.y.x, lane);
-	res.y.y = __shfl(var.y.y, lane);
-	res.z.x = __shfl(var.z.x, lane);
-	res.z.y = __shfl(var.z.y, lane);
-	res.w.x = __shfl(var.w.x, lane);
-	res.w.y = __shfl(var.w.y, lane);
+	res.x.x = __shfl2(var.x.x, lane);
+	res.x.y = __shfl2(var.x.y, lane);
+	res.y.x = __shfl2(var.y.x, lane);
+	res.y.y = __shfl2(var.y.y, lane);
+	res.z.x = __shfl2(var.z.x, lane);
+	res.z.y = __shfl2(var.z.y, lane);
+	res.w.x = __shfl2(var.w.x, lane);
+	res.w.y = __shfl2(var.w.y, lane);
 	return res;
 #else
 	return var;
@@ -569,22 +575,22 @@ static __device__ __forceinline__ ulonglong4 shuffle4(ulonglong4 var, int lane)
 {
 #if __CUDA_ARCH__ >= 300
 	ulonglong4 res;
-    uint2 temp;
+	uint2 temp;
 	temp = vectorize(var.x);
-	temp.x = __shfl(temp.x, lane);
-	temp.y = __shfl(temp.y, lane);
+	temp.x = __shfl2(temp.x, lane);
+	temp.y = __shfl2(temp.y, lane);
 	res.x = devectorize(temp);
 	temp = vectorize(var.y);
-	temp.x = __shfl(temp.x, lane);
-	temp.y = __shfl(temp.y, lane);
+	temp.x = __shfl2(temp.x, lane);
+	temp.y = __shfl2(temp.y, lane);
 	res.y = devectorize(temp);
 	temp = vectorize(var.z);
-	temp.x = __shfl(temp.x, lane);
-	temp.y = __shfl(temp.y, lane);
+	temp.x = __shfl2(temp.x, lane);
+	temp.y = __shfl2(temp.y, lane);
 	res.z = devectorize(temp);
 	temp = vectorize(var.w);
-	temp.x = __shfl(temp.x, lane);
-	temp.y = __shfl(temp.y, lane);
+	temp.x = __shfl2(temp.x, lane);
+	temp.y = __shfl2(temp.y, lane);
 	res.w = devectorize(temp);
 	return res;
 #else

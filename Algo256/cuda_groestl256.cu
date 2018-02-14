@@ -11,9 +11,6 @@ static unsigned int* d_textures[MAX_GPUS][8];
 
 __constant__ uint32_t pTarget[8];
 
-#define NUM_RES 8
-#define TPB 256
-
 #define C32e(x) \
 	  ((SPH_C32(x) >> 24) \
 	| ((SPH_C32(x) >>  8) & SPH_C32(0x0000FF00)) \
@@ -111,7 +108,7 @@ extern uint32_t T3dn_cpu[];
 __device__ __forceinline__
 void groestl256_perm_P(uint32_t thread,uint32_t *a, char *mixtabs)
 {
-	#pragma unroll
+	#pragma unroll 10
 	for (int r = 0; r<10; r++)
 	{
 		uint32_t t[16];
@@ -178,7 +175,7 @@ void groestl256_perm_Q(uint32_t thread, uint32_t *a, char *mixtabs)
 	}
 }
 
-__global__ __launch_bounds__(TPB, 1)
+__global__ __launch_bounds__(256,1)
 void groestl256_gpu_hash_32(uint32_t threads, uint32_t startNounce, uint64_t *outputHash, uint32_t *resNonces)
 {
 #if USE_SHARED
@@ -195,7 +192,7 @@ void groestl256_gpu_hash_32(uint32_t threads, uint32_t startNounce, uint64_t *ou
 		*((uint32_t*)mixtabs + (1792 + threadIdx.x)) = tex1Dfetch(t3dn2, threadIdx.x);
 	}
 
-//	__syncthreads();
+	__syncthreads();
 #endif
 
 	uint32_t thread = (blockDim.x * blockIdx.x + threadIdx.x);
@@ -247,13 +244,8 @@ void groestl256_gpu_hash_32(uint32_t threads, uint32_t startNounce, uint64_t *ou
 
 		uint32_t nonce = startNounce + thread;
 		if (state[15] <= pTarget[7]) {
-			/*
 			atomicMin(&resNonces[1], resNonces[0]);
 			atomicMin(&resNonces[0], nonce);
-			*/
-			#pragma unroll
-			for (int i = NUM_RES - 1; i > 0; i--) resNonces[i] = resNonces[i - 1];
-			resNonces[0] = nonce;
 		}
 	}
 }
@@ -284,8 +276,8 @@ void groestl256_cpu_init(int thr_id, uint32_t threads)
 	texDef(6, t3up2, d_T3up, T3up_cpu, sizeof(uint32_t) * 256);
 	texDef(7, t3dn2, d_T3dn, T3dn_cpu, sizeof(uint32_t) * 256);
 
-	cudaMalloc(&d_GNonces[thr_id], NUM_RES*sizeof(uint32_t));
-	cudaMallocHost(&h_GNonces[thr_id], NUM_RES*sizeof(uint32_t));
+	cudaMalloc(&d_GNonces[thr_id], 2*sizeof(uint32_t));
+	cudaMallocHost(&h_GNonces[thr_id], 2*sizeof(uint32_t));
 }
 
 __host__
@@ -302,15 +294,15 @@ __host__
 uint32_t groestl256_cpu_hash_32(int thr_id, uint32_t threads, uint32_t startNounce, uint64_t *d_outputHash, int order)
 {
 	uint32_t result = UINT32_MAX;
-	cudaMemset(d_GNonces[thr_id], 0xff, NUM_RES*sizeof(uint32_t));
-	const uint32_t threadsperblock = TPB;
+	cudaMemset(d_GNonces[thr_id], 0xff, 2*sizeof(uint32_t));
+	const uint32_t threadsperblock = 256;
 
 	// berechne wie viele Thread Blocks wir brauchen
 	dim3 grid((threads + threadsperblock-1)/threadsperblock);
 	dim3 block(threadsperblock);
 
 #if USE_SHARED
-	size_t shared_size = 8 * TPB * sizeof(uint32_t);
+	size_t shared_size = 8 * 256 * sizeof(uint32_t);
 #else
 	size_t shared_size = 0;
 #endif
@@ -328,10 +320,10 @@ uint32_t groestl256_cpu_hash_32(int thr_id, uint32_t threads, uint32_t startNoun
 __host__
 uint32_t groestl256_getSecNonce(int thr_id, int num)
 {
-	uint32_t results[NUM_RES];
+	uint32_t results[2];
 	memset(results, 0xFF, sizeof(results));
 	cudaMemcpy(results, d_GNonces[thr_id], sizeof(results), cudaMemcpyDeviceToHost);
-	if (results[num] == results[num - 1])
+	if (results[1] == results[0])
 		return UINT32_MAX;
 	return results[num];
 }

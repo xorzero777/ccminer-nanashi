@@ -6,9 +6,9 @@
 
 extern void neoscrypt_setBlockTarget(uint32_t* const data, uint32_t* const ptarget);
 
-extern void neoscrypt_init_2stream(int thr_id, uint32_t threads);
-extern void neoscrypt_free_2stream(int thr_id);
-extern void neoscrypt_hash_k4_2stream(int thr_id, uint32_t threads, uint32_t startNounce, uint32_t *resNonces, bool stratum);
+extern void neoscrypt_init(int thr_id, uint32_t threads);
+extern void neoscrypt_free(int thr_id);
+extern void neoscrypt_hash_k4(int thr_id, uint32_t threads, uint32_t startNounce, uint32_t *resNonces, bool stratum);
 
 static bool init[MAX_GPUS] = { 0 };
 
@@ -21,22 +21,11 @@ int scanhash_neoscrypt(int thr_id, struct work* work, uint32_t max_nonce, unsign
 
 	int dev_id = device_map[thr_id];
 	int intensity = is_windows() ? 18 : 19;
-	// Pascal
-	if (strstr(device_name[dev_id], "GTX 10")) intensity = 22;
-	// Maxwell
-	else if (strstr(device_name[dev_id], "TITAN X")) intensity = 21;
-	else if (strstr(device_name[dev_id], "980")) intensity = 21;
-	else if (strstr(device_name[dev_id], "970")) intensity = 20;
-	else if (strstr(device_name[dev_id], "960")) intensity = 20;
-	else if (strstr(device_name[dev_id], "950")) intensity = 19;
-	else if (strstr(device_name[dev_id], "750 Ti")) intensity = 19;
-	else if (strstr(device_name[dev_id], "750")) intensity = 19;
+	if (strstr(device_name[dev_id], "GTX 10")) intensity = 21; // >= 20 need more than 2GB
 
 	uint32_t throughput = cuda_default_throughput(thr_id, 1U << intensity);
 	throughput = throughput / 32; /* set for max intensity ~= 20 */
 	api_set_throughput(thr_id, throughput);
-
-	if (init[thr_id]) throughput = min(throughput, max_nonce - first_nonce + 1);
 
 	if (opt_benchmark)
 		ptarget[7] = 0x00ff;
@@ -51,14 +40,13 @@ int scanhash_neoscrypt(int thr_id, struct work* work, uint32_t max_nonce, unsign
 			cudaSetDeviceFlags(cudaDeviceScheduleBlockingSync);
 			cudaGetLastError(); // reset errors if device is not "reset"
 		}
-
 		if (device_sm[dev_id] <= 300) {
 			gpulog(LOG_ERR, thr_id, "Sorry neoscrypt is not supported on SM 3.0 devices");
 			proper_exit(EXIT_CODE_CUDA_ERROR);
 		}
+		gpulog(LOG_INFO, thr_id, "Intensity set to %g (+5), %u cuda threads", throughput2intensity(throughput), throughput);
 
-		gpulog(LOG_INFO, thr_id, "Using %d cuda threads", throughput);
-		neoscrypt_init_2stream(thr_id, throughput);
+		neoscrypt_init(thr_id, throughput);
 
 		init[thr_id] = true;
 	}
@@ -66,39 +54,41 @@ int scanhash_neoscrypt(int thr_id, struct work* work, uint32_t max_nonce, unsign
 	if (have_stratum) {
 		for (int k = 0; k < 20; k++)
 			be32enc(&endiandata[k], pdata[k]);
-	}
-	else {
+	} else {
 		for (int k = 0; k < 20; k++)
 			endiandata[k] = pdata[k];
 	}
 
-	neoscrypt_setBlockTarget(endiandata, ptarget);
+	neoscrypt_setBlockTarget(endiandata,ptarget);
 
 	do {
-		uint32_t foundNonces[2] = { UINT32_MAX, UINT32_MAX };
-		neoscrypt_hash_k4_2stream(thr_id, throughput, pdata[19], foundNonces, have_stratum);
+		memset(work->nonces, 0xff, sizeof(work->nonces));
+		neoscrypt_hash_k4(thr_id, throughput, pdata[19], work->nonces, have_stratum);
 
 		*hashes_done = pdata[19] - first_nonce + throughput;
 
-		if (foundNonces[0] != UINT32_MAX)
+		if (work->nonces[0] != UINT32_MAX)
 		{
+			const uint32_t Htarg = ptarget[7];
 			uint32_t _ALIGN(64) vhash[8];
 
 			if (have_stratum) {
-				be32enc(&endiandata[19], foundNonces[0]);
+				be32enc(&endiandata[19], work->nonces[0]);
+			} else {
+				endiandata[19] = work->nonces[0];
 			}
-			else {
-				endiandata[19] = foundNonces[0];
-			}
-			neoscrypt((uchar*)vhash, (uchar*)endiandata, 0x80000620U);
+			neoscrypt((uchar*)vhash, (uchar*) endiandata, 0x80000620U);
 
-			if (vhash[7] <= ptarget[7] && fulltest(vhash, ptarget)) {
+			if (vhash[7] <= Htarg && fulltest(vhash, ptarget)) {
+				work->valid_nonces = 1;
 				work_set_target_ratio(work, vhash);
-				pdata[19] = foundNonces[0];
-				return 1;
+				pdata[19] = work->nonces[0] + 1; // cursor
+				return work->valid_nonces;
 			}
-			else {
-				gpulog(LOG_WARNING, thr_id, "nonce %08x does not validate on CPU!", foundNonces[0]);
+			else if (vhash[7] > Htarg) {
+				gpu_increment_reject(thr_id);
+				if (!opt_quiet)
+				gpulog(LOG_WARNING, thr_id, "nonce %08x does not validate on CPU!", work->nonces[0]);
 			}
 		}
 
@@ -123,9 +113,8 @@ void free_neoscrypt(int thr_id)
 
 	cudaThreadSynchronize();
 
-	neoscrypt_free_2stream(thr_id);
+	neoscrypt_free(thr_id);
 	init[thr_id] = false;
 
 	cudaDeviceSynchronize();
 }
-

@@ -25,7 +25,7 @@
 
 extern "C" short device_map[MAX_GPUS];
 extern "C"  long device_sm[MAX_GPUS];
-
+extern "C" short device_mpcount[MAX_GPUS];
 extern int cuda_arch[MAX_GPUS];
 
 // common functions
@@ -77,6 +77,12 @@ extern const uint3 threadIdx;
 #define ROTR32(x, n) __funnelshift_r( (x), (x), (n) )
 #endif
 
+#define AS_U32(addr)   *((uint32_t*)(addr))
+#define AS_U64(addr)   *((uint64_t*)(addr))
+#define AS_UINT2(addr) *((uint2*)(addr))
+#define AS_UINT4(addr) *((uint4*)(addr))
+#define AS_UL2(addr)   *((ulonglong2*)(addr))
+
 __device__ __forceinline__ uint64_t MAKE_ULONGLONG(uint32_t LO, uint32_t HI)
 {
 #if __CUDA_ARCH__ >= 130
@@ -96,7 +102,7 @@ __device__ __forceinline__ uint64_t REPLACE_LODWORD(const uint64_t &x, const uin
 	return (x & 0xFFFFFFFF00000000ULL) | ((uint64_t)y);
 }
 
-// Endian Drehung fÅE 32 Bit Typen
+// Endian Drehung f¸r 32 Bit Typen
 #ifdef __CUDA_ARCH__
 __device__ __forceinline__ uint32_t cuda_swab32(uint32_t x)
 {
@@ -471,15 +477,6 @@ static __host__ __device__ __forceinline__ uint64_t devectorize(uint2 v) {
 #endif
 }
 
-static __device__ __forceinline__ uint2 eorswap32(uint2 u, uint2 v)
-{
-	uint2 result;
-	result.y = u.x ^ v.x;
-	result.x = u.y ^ v.y;
-	return result;
-}
-
-
 /**
  * uint2 direct ops by c++ operator definitions
  */
@@ -490,31 +487,12 @@ static __device__ __forceinline__ uint2 operator~ (uint2 a) { return make_uint2(
 static __device__ __forceinline__ void operator^= (uint2 &a, uint2 b) { a = a ^ b; }
 
 static __device__ __forceinline__ uint2 operator+ (uint2 a, uint2 b) {
-#ifdef __CUDA_ARCH__
-	uint2 result;
-	asm("{ // uint2 a+b \n\t"
-		"add.cc.u32 %0, %2, %4; \n\t"
-		"addc.u32   %1, %3, %5; \n\t"
-	"}\n" : "=r"(result.x), "=r"(result.y) : "r"(a.x), "r"(a.y), "r"(b.x), "r"(b.y));
-	return result;
-#else
 	return vectorize(devectorize(a) + devectorize(b));
-#endif
 }
 static __device__ __forceinline__ void operator+= (uint2 &a, uint2 b) { a = a + b; }
 
-
 static __device__ __forceinline__ uint2 operator- (uint2 a, uint2 b) {
-#if defined(__CUDA_ARCH__) && CUDA_VERSION < 7000
-	uint2 result;
-	asm("{ // uint2 a-b \n\t"
-		"sub.cc.u32 %0, %2, %4; \n\t"
-		"subc.u32   %1, %3, %5; \n\t"
-	"}\n" : "=r"(result.x), "=r"(result.y) : "r"(a.x), "r"(a.y), "r"(b.x), "r"(b.y));
-	return result;
-#else
 	return vectorize(devectorize(a) - devectorize(b));
-#endif
 }
 static __device__ __forceinline__ void operator-= (uint2 &a, uint2 b) { a = a - b; }
 
@@ -570,9 +548,11 @@ uint2 ROR2(const uint2 a, const int offset)
 	return result;
 }
 
-#if  __CUDA_ARCH__ >= 350
-__inline__ __device__ uint2 ROL2(const uint2 a, const int offset) {
+__device__ __forceinline__
+uint2 ROL2(const uint2 a, const int offset)
+{
 	uint2 result;
+#if __CUDA_ARCH__ > 300
 	if (offset >= 32) {
 		asm("shf.l.wrap.b32 %0, %1, %2, %3;" : "=r"(result.x) : "r"(a.x), "r"(a.y), "r"(offset));
 		asm("shf.l.wrap.b32 %0, %1, %2, %3;" : "=r"(result.y) : "r"(a.y), "r"(a.x), "r"(offset));
@@ -581,20 +561,14 @@ __inline__ __device__ uint2 ROL2(const uint2 a, const int offset) {
 		asm("shf.l.wrap.b32 %0, %1, %2, %3;" : "=r"(result.x) : "r"(a.y), "r"(a.x), "r"(offset));
 		asm("shf.l.wrap.b32 %0, %1, %2, %3;" : "=r"(result.y) : "r"(a.x), "r"(a.y), "r"(offset));
 	}
-	return result;
-}
 #else
-__inline__ __device__ uint2 ROL2(const uint2 v, const int n)
-{
-	uint2 result;
-	if (!n)
-		result = v;
+	if (!offset)
+		result = a;
 	else
-		result = ROR2(v, 64 - n);
-
+		result = ROR2(a, 64 - offset);
+#endif
 	return result;
 }
-#endif
 
 __device__ __forceinline__
 uint2 SWAPUINT2(uint2 value)
@@ -694,5 +668,15 @@ static uint2 SHR2(uint2 a, int offset)
 	return a;
 #endif
 }
+
+// CUDA 9+ deprecated functions warnings (new mask param)
+#if CUDA_VERSION >= 9000 && __CUDA_ARCH__ >= 300
+#undef __shfl
+#define __shfl(var, srcLane, width)  __shfl_sync(0xFFFFFFFFu, var, srcLane, width)
+#undef __shfl_up
+#define __shfl_up(var, delta, width) __shfl_up_sync(0xFFFFFFFF, var, delta, width)
+#undef __any
+#define __any(p) __any_sync(0xFFFFFFFFu, p)
+#endif
 
 #endif // #ifndef CUDA_HELPER_H
