@@ -1569,8 +1569,29 @@ static bool get_upstream_work(CURL *curl, struct work *work)
 	struct pool_infos *pool = &pools[work->pooln];
 	const char *rpc_req = json_rpc_getwork;
 	json_t *val;
+	if (opt_debug_threads)
+		applog(LOG_DEBUG, "%s: want_longpoll=%d have_longpoll=%d",
+			__func__, want_longpoll, have_longpoll);
 
+#ifndef ORG
+	int err;
+start:
+#endif
 	gettimeofday(&tv_start, NULL);
+	/* want_longpoll/have_longpoll required here to init/unlock the lp thread */
+#ifdef ORG
+	val = json_rpc_call_pool(curl, pool, rpc_req, want_longpoll, have_longpoll, NULL);
+#else
+	val = json_rpc_call_pool(curl, pool, allow_gbt ? gbt_req : getwork_req, want_longpoll, have_longpoll, &err);
+
+#endif
+	gettimeofday(&tv_end, NULL);
+
+	if (have_stratum || unlikely(work->pooln != cur_pooln)) {
+		if (val)
+			json_decref(val);
+		return false;
+	}
 
 	if (opt_algo == ALGO_SIA) {
 		char *sia_header = sia_getheader(curl, pool);
@@ -1585,20 +1606,24 @@ static bool get_upstream_work(CURL *curl, struct work *work)
 		return rc;
 	}
 
-	if (opt_debug_threads)
-		applog(LOG_DEBUG, "%s: want_longpoll=%d have_longpoll=%d",
-			__func__, want_longpoll, have_longpoll);
-
+	
 	/* want_longpoll/have_longpoll required here to init/unlock the lp thread */
-	val = json_rpc_call_pool(curl, pool, rpc_req, want_longpoll, have_longpoll, NULL);
-	gettimeofday(&tv_end, NULL);
-
-	if (have_stratum || unlikely(work->pooln != cur_pooln)) {
+	
+#ifndef ORG
+	if (!allow_gbt && !allow_getwork) {
+		applog(LOG_ERR, "No usable protocol");
 		if (val)
 			json_decref(val);
 		return false;
 	}
 
+	if (allow_gbt && allow_getwork && !val && err == CURLE_OK) {
+		applog(LOG_NOTICE, "getblocktemplate failed, falling back to getwork");
+		allow_gbt = false;
+		goto start;
+	}
+
+#endif
 	if (!val)
 		return false;
 
@@ -1609,7 +1634,9 @@ static bool get_upstream_work(CURL *curl, struct work *work)
 		/* show time because curl can be slower against versions/config */
 		applog(LOG_DEBUG, "got new work in %.2f ms",
 		       (1000.0 * diff.tv_sec) + (0.001 * diff.tv_usec));
+#ifndef ORG
 	}
+#endif
 
 	json_decref(val);
 
