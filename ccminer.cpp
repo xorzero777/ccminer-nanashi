@@ -3878,6 +3878,9 @@ void parse_arg(int key, char *arg)
 	case 1009:
 		opt_shares_limit = atoi(arg);
 		break;
+	case 1010:
+		allow_getwork = false;
+		break;
 	case 1011:
 		allow_gbt = false;
 		break;
