@@ -19,7 +19,7 @@ This variant was tested and built on Linux (ubuntu server 14.04) and VStudio 201
 
 Note that the x86 releases are generally faster than x64 ones on Windows.
 
-~~The recommended CUDA Toolkit version is [6.5.19](http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.19_windows_general_64.exe), but some light algos could be faster with the version 7.5 (like blake and skein).
+~~The recommended CUDA Toolkit version is [6.5.19](http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.19_windows_general_64.exe), but some light algos could be faster with the version 7.5 (like blake and skein).~~
 
 This is now based off of the Garlicoin Allium branch, and therefor the tpruvot branch of ccminer, with the changes for solo mining from the nanashi fork added in. This should allow for solo mining on garlicoin once the allium hard fork occurs.
 
