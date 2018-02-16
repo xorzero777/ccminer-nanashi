@@ -765,7 +765,7 @@ struct pool_infos {
 	// credentials
 	char url[512];
 	char short_url[64];
-	char user[64];
+	char user[192];
 	char pass[384];
 	// config options
 	double max_diff;
