@@ -1081,144 +1081,367 @@ static const sph_u64 T6[] = {
 	C64e(0x51c65113c68484d5), C64e(0xd3b8d3bbb8d0d003),
 	C64e(0x5ec35e1fc38282dc), C64e(0xcbb0cb52b02929e2),
 	C64e(0x997799b4775a5ac3), C64e(0x3311333c111e1e2d),
-	C64e(0x46cb46f6cb7b7b3d), C64e(0x1ffc1f4bfca8Ч    тс  “  _Myiter   Ч  _Mybase   Щ  iterator_category тс     _Nodeptr утс  ћ  value_type с  t   difference_type   ѕ  pointer   —  reference тс і  _Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<int const ,tsumarray> > > > тс  Ч  _Unchecked_type  Ј  _Rechecked с Є  _Unchecked с є  operator* тс Ї  operator-> с љ  operator++ с љ  operator-- с ј  operator== с ј  operator!= со  Ѕ           std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<int const ,tsumarray> > > > .?AV?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUtsumarray@@@std@@@std@@@std@@@std@@ утс
- ”  
-Д   	   ”  √   Ю       	   ”  √              ƒ     ≈  ц   А              std::_Tree_unchecked_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<int const ,tsumarray> > > > .?AV?$_Tree_unchecked_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUtsumarray@@@std@@@std@@@std@@@std@@ утс
- ”  *А  
-    «   	»  ”  √    …      
- ”   тс
- Ћ  
-Д   	«  ”  ћ           	–  ”  ћ            	Ќ  ”  ћ            	”  ”  √          	»  ”  √               –     —  Ґ  “    тс  ”  _Myiter   “  _Mybase   Щ  iterator_category тс     _Nodeptr утс  ћ  value_type с  t   difference_type   Ќ  pointer   –  reference тс ∆  _Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<int const ,tsumarray> > > >   «  _Unchecked_type     _Rechecked с Ќ  _Unchecked с ќ  operator* тс ѕ  operator-> с “  operator++ с “  operator-- св  ”           std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<int const ,tsumarray> > > > .?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUtsumarray@@@std@@@std@@@std@@@std@@ утс
- ¬  
-А  
- ”  
-А   A   "   @  с  „    value .   Ў          @ tsumarray .?AUtsumarray@@ 
- i  
-А  
- A  
-А  *   А              timeval .?AUtimeval@@ 
- №  
-А  .   А              timezone .?AUtimezone@@ тс
- ё  
-А      Ё  я   t      а  *       tv_sec утс     tv_usec тс*   в           timeval .?AUtimeval@@ 
- ƒ  
-А  .   А              thr_info .?AUthr_info@@ тс
- е  
-А  :   А              ptw32_handle_t .?AUptw32_handle_t@@ тс.   А              thread_q .?AUthread_q@@ тс
- и  
-А  >  t     id утс з   pth тс й   q  Љ   gpu тс.   к           thr_info .?AUthr_info@@ тс
- љ  
-А  ^   А      __isnan::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__isnan@`51098d9d  утс
- н   тс^   ¬   __isnan::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__isnan@`51098d9d  утс^   А      __isinf::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__isinf@`51098d9d  утс
- р   тс^   ¬   __isinf::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__isinf@`51098d9d  утсb   А      __signbit::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__signbit@`51098d9d  утс
- у   тсb   Ќ   __signbit::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__signbit@`51098d9d  утс^   А      __finite::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__finite@`51098d9d  с
- ц   тс^   ¬   __finite::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?__finite@`51098d9d  сZ   А      erfinv::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?erfinv@`51098d9d  с
- щ   тсZ   ¬   erfinv::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?erfinv@`51098d9d  с^   А      erfcinv::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?erfcinv@`51098d9d  утс
- ь   тс^   ¬   erfcinv::__l2::<unnamed-type-cvt> .?AT<unnamed-type-cvt>@?1?erfcinv@`51098d9d  утс    D  u    u      €   	   ƒ            К   А              std::_Allocator_base<std::pair<int const ,tsumarray> > .?AU?$_Allocator_base@U?$pair@$$CBHUtsumarray@@@std@@@std@@ утс   ћ  value_type сК             std::_Allocator_base<std::pair<int const ,tsumarray> > .?AU?$_Allocator_base@U?$pair@$$CBHUtsumarray@@@std@@@std@@ утс
- б  
-Д   	я  я             	ѕ  я      6      
-    –   	Ќ  я                     	  
- я  
-Д   	   я     г       	   я                           Ќ  u    	   я                u   ї   	Ќ  я             	Ќ  я      n                     Ќ  —   	   я            
-    Ќ   	   я                        	u   я             >      тс  я  other тс    _Mybase   ћ  value_type с  Ќ  pointer   ѕ  const_pointer тс    void_pointer утс  ї  const_void_pointer с  –  reference тс  —  const_reference   u   size_type тс  t   difference_type   *  propagate_on_container_copy_assignment с  *  propagate_on_container_move_assignment с  *  propagate_on_container_swap    select_on_container_copy_construction тс 
-  address    allocator<std::pair<int const ,tsumarray> >    deallocate с   allocate утс   construct тс   max_size утс~             std::allocator<std::pair<int const ,tsumarray> > .?AV?$allocator@U?$pair@$$CBHUtsumarray@@@std@@@std@@ утс 	   я             
- б  
-А  Z   А              std::binary_function<int,int,bool> .?AU?$binary_function@HH_N@std@@ тсR   t   first_argument_type   t   second_argument_type утс  0   result_type Z              std::binary_function<int,int,bool> .?AU?$binary_function@HH_N@std@@ тс    Ъ  Ъ  
- €  
-Д   	0   ю  #    "      "       тс $  operator() с6  %           std::less<int> .?AU?$less@H@std@@ 
- €  
-А  
- Ћ  
-А  
- ю  
-А  
- †  *А  B   А              std::tuple<int const &> .?AV?$tuple@ABH@std@@ 
- +  КА  
- У  КА      “  *  ,  -   	”  ƒ     .      
- У  
-А  
- +  
-А  
- +   тс
- 2  *А  
-    3  
- +  
-Д   	   +  5   4       	   +  5   K       	   +  5             6     7     8  
- +  *А  
-    ,   	:  +  5    ;       	:  +  5    4          <     =  
- 2  
-Д   	Ц  +  ?            	Ы  +  5               @     A  
-    :   	   +  5    C      N   А              std::_Tuple_val<int const &> .?AU?$_Tuple_val@ABH@std@@ тсЇ   У    тс  Ъ  _This_type с  +  _Myt утс  У  _Mybase  G  _Mysize  9  tuple<int const &> с >  operator= тс B  _Get_rest тс D  swap утс E    _Myfirst сB  6F           std::tuple<int const &> .?AV?$tuple@ABH@std@@  +    K  
- †  
-А  
- “  
-А      Ъ  Н  
- ћ  
-Д   	   ћ  L   K       	   ћ  L              M     N   	–  ћ  L    6       	–  ћ  L    ;          P     Q   	   ћ  L          ¶   ћ  _Myt утс  3  first_type с  i  second_type  O  pair<int const ,tsumarray> с R  operator= тс S  swap утс 3    first  i   second утсZ 
- 6T          H std::pair<int const ,tsumarray> .?AU?$pair@$$CBHUtsumarray@@@std@@ утс
- Џ  
-А  
- ≈  
-А   	   ”  √    Ю      
-    
-А  
- …  
-Д  
- Z  
-А  
- Х  
-А  
- ∆  
-А  
- «  
-А  
-    Щ   p     _  
- A   тс
- a  
-А  
- b  
-А  6      _Buf с p    _Ptr с     _Alias утсv  d   std::_String_val<std::_Simple_types<char> >::_Bxty .?AT_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@ 
- p   
-Д  
- f  
-А  
- я  
-А   	   ≈             	   “  ±    Ю      К   А              std::pointer_traits<std::pair<int const ,tsumarray> *> .?AU?$pointer_traits@PAU?$pair@$$CBHUtsumarray@@@std@@@std@@ тс 	Ќ  k                	Ъ           6       	   ∆  ц    г      ™   А              std::allocator<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > .?AV?$allocator@U?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@@std@@ ґ   А              std::_Allocator_base<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > .?AU?$_Allocator_base@U?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@@std@@    …  value_type сґ  q           std::_Allocator_base<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > .?AU?$_Allocator_base@U?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@@std@@ 
- …   тс
- s  
-А  
- …  *А  
- s  *А  
- o   тс
- w  
-Д   	o  o  x          
-    v   	t  o  x    z      
-    u   	   o  x    |          {     }  
- w  *А  
-      
- o  
-Д   	   o  Б   А       	   o  Б              В     Г         u    	   o  Б    Е       	   o  Б           	   o  Б    n          З     И         v   	   o  Б    К       	   o  Б    Ў          Л     М   	u   o  x           V  p    тс  o  other тс  p  _Mybase   …  value_type с     pointer   t  const_pointer тс    void_pointer утс  ї  const_void_pointer с  u  reference тс  v  const_reference   u   size_type тс  t   difference_type   *  propagate_on_container_copy_assignment с  *  propagate_on_container_move_assignment с  *  propagate_on_container_swap  y  select_on_container_copy_construction тс ~  address  Д  allocator<std::_Tree_node<std::pair<int const ,tsumarray>,void *> >  Ж  deallocate с Й  allocate утс Н  construct тс О  max_size утс™  П           std::allocator<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > .?AV?$allocator@U?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@@std@@ ё   А              std::allocator_traits<std::allocator<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > > .?AU?$allocator_traits@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@@std@@@std@@ тс
- з  
-Д   	а  а  Т           	t  а  Т    z       	   а  Т    |          Ф     Х  
- а  
-Д   	   а  Ч   й       	   а  Ч   А       	   а  Ч              Ш     Щ     Ъ  
- а  *А   	Ь  а  Ч    й       	Ь  а  Ч    А          Э     Ю   	   а  Ч           	   а  Ч    n          †     °   	   а  Ч    Е       	   а  Ч    Ў       	u   а  Т           Т  o    тс  а  other тс  o  _Mybase   С  _Mytraits тс  …  value_type с     pointer   t  const_pointer тс    void_pointer утс  ї  const_void_pointer с  u  reference тс  v  const_reference   u   size_type тс  t   difference_type   *  propagate_on_container_copy_assignment с  *  propagate_on_container_move_assignment с  *  propagate_on_container_swap  У  select_on_container_copy_construction тс Ц  address  Ы  _Wrap_alloc<std::allocator<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > > с Я  operator= тс Ґ  allocate утс £  deallocate с §  construct тс •  max_size утс“  6¶           std::_Wrap_alloc<std::allocator<std::_Tree_node<std::pair<int const ,tsumarray>,void *> > > .?AU?$_Wrap_alloc@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@@std@@@std@@ 
- а  
-А  
-    Y   	   а  Ч    ©      
-    Ћ   Y     Ђ   	u  …  Z    z       	   …  Z          Џ      _Nodeptr утс      _Left      _Parent тс     _Right утс p    _Color утс p    _Isnil утс ћ   _Myval утс ≠  operator= тсЃ  _Tree_node<std::pair<int const ,tsumarray>,void *> сЖ 	 6ѓ          X std::_Tree_node<std::pair<int const ,tsumarray>,void *> .?AU?$_Tree_node@U?$pair@$$CBHUtsumarray@@@std@@PAX@std@@ 
- Ќ  
-А  
- Ч  
-А   	   Ч  Я    Ю       Ќ           Щ  Щ         µ   	   а  Ч           	   «  д    г       	   а  Ч           
- з  
-А  
- Y  
-А  
- »  
-А   	   »  ‘           
- o  
-А   	   o  Б               Y  Ћ   	   а  Ч    ј          u             xF, \
+	C64e(0x46cb46f6cb7b7b3d), C64e(0x1ffc1f4bfca8a8b7),
+	C64e(0x61d661dad66d6d0c), C64e(0x4e3a4e583a2c2c62)
+};
+
+static const sph_u64 T7[] = {
+	C64e(0x32f4a5f497a5c6c6), C64e(0x6f978497eb84f8f8),
+	C64e(0x5eb099b0c799eeee), C64e(0x7a8c8d8cf78df6f6),
+	C64e(0xe8170d17e50dffff), C64e(0x0adcbddcb7bdd6d6),
+	C64e(0x16c8b1c8a7b1dede), C64e(0x6dfc54fc39549191),
+	C64e(0x90f050f0c0506060), C64e(0x0705030504030202),
+	C64e(0x2ee0a9e087a9cece), C64e(0xd1877d87ac7d5656),
+	C64e(0xcc2b192bd519e7e7), C64e(0x13a662a67162b5b5),
+	C64e(0x7c31e6319ae64d4d), C64e(0x59b59ab5c39aecec),
+	C64e(0x40cf45cf05458f8f), C64e(0xa3bc9dbc3e9d1f1f),
+	C64e(0x49c040c009408989), C64e(0x68928792ef87fafa),
+	C64e(0xd03f153fc515efef), C64e(0x9426eb267febb2b2),
+	C64e(0xce40c94007c98e8e), C64e(0xe61d0b1ded0bfbfb),
+	C64e(0x6e2fec2f82ec4141), C64e(0x1aa967a97d67b3b3),
+	C64e(0x431cfd1cbefd5f5f), C64e(0x6025ea258aea4545),
+	C64e(0xf9dabfda46bf2323), C64e(0x5102f702a6f75353),
+	C64e(0x45a196a1d396e4e4), C64e(0x76ed5bed2d5b9b9b),
+	C64e(0x285dc25deac27575), C64e(0xc5241c24d91ce1e1),
+	C64e(0xd4e9aee97aae3d3d), C64e(0xf2be6abe986a4c4c),
+	C64e(0x82ee5aeed85a6c6c), C64e(0xbdc341c3fc417e7e),
+	C64e(0xf3060206f102f5f5), C64e(0x52d14fd11d4f8383),
+	C64e(0x8ce45ce4d05c6868), C64e(0x5607f407a2f45151),
+	C64e(0x8d5c345cb934d1d1), C64e(0xe1180818e908f9f9),
+	C64e(0x4cae93aedf93e2e2), C64e(0x3e9573954d73abab),
+	C64e(0x97f553f5c4536262), C64e(0x6b413f41543f2a2a),
+	C64e(0x1c140c14100c0808), C64e(0x63f652f631529595),
+	C64e(0xe9af65af8c654646), C64e(0x7fe25ee2215e9d9d),
+	C64e(0x4878287860283030), C64e(0xcff8a1f86ea13737),
+	C64e(0x1b110f11140f0a0a), C64e(0xebc4b5c45eb52f2f),
+	C64e(0x151b091b1c090e0e), C64e(0x7e5a365a48362424),
+	C64e(0xadb69bb6369b1b1b), C64e(0x98473d47a53ddfdf),
+	C64e(0xa76a266a8126cdcd), C64e(0xf5bb69bb9c694e4e),
+	C64e(0x334ccd4cfecd7f7f), C64e(0x50ba9fbacf9feaea),
+	C64e(0x3f2d1b2d241b1212), C64e(0xa4b99eb93a9e1d1d),
+	C64e(0xc49c749cb0745858), C64e(0x46722e72682e3434),
+	C64e(0x41772d776c2d3636), C64e(0x11cdb2cda3b2dcdc),
+	C64e(0x9d29ee2973eeb4b4), C64e(0x4d16fb16b6fb5b5b),
+	C64e(0xa501f60153f6a4a4), C64e(0xa1d74dd7ec4d7676),
+	C64e(0x14a361a37561b7b7), C64e(0x3449ce49face7d7d),
+	C64e(0xdf8d7b8da47b5252), C64e(0x9f423e42a13edddd),
+	C64e(0xcd937193bc715e5e), C64e(0xb1a297a226971313),
+	C64e(0xa204f50457f5a6a6), C64e(0x01b868b86968b9b9),
+	C64e(0x0000000000000000), C64e(0xb5742c74992cc1c1),
+	C64e(0xe0a060a080604040), C64e(0xc2211f21dd1fe3e3),
+	C64e(0x3a43c843f2c87979), C64e(0x9a2ced2c77edb6b6),
+	C64e(0x0dd9bed9b3bed4d4), C64e(0x47ca46ca01468d8d),
+	C64e(0x1770d970ced96767), C64e(0xafdd4bdde44b7272),
+	C64e(0xed79de7933de9494), C64e(0xff67d4672bd49898),
+	C64e(0x9323e8237be8b0b0), C64e(0x5bde4ade114a8585),
+	C64e(0x06bd6bbd6d6bbbbb), C64e(0xbb7e2a7e912ac5c5),
+	C64e(0x7b34e5349ee54f4f), C64e(0xd73a163ac116eded),
+	C64e(0xd254c55417c58686), C64e(0xf862d7622fd79a9a),
+	C64e(0x99ff55ffcc556666), C64e(0xb6a794a722941111),
+	C64e(0xc04acf4a0fcf8a8a), C64e(0xd9301030c910e9e9),
+	C64e(0x0e0a060a08060404), C64e(0x66988198e781fefe),
+	C64e(0xab0bf00b5bf0a0a0), C64e(0xb4cc44ccf0447878),
+	C64e(0xf0d5bad54aba2525), C64e(0x753ee33e96e34b4b),
+	C64e(0xac0ef30e5ff3a2a2), C64e(0x4419fe19bafe5d5d),
+	C64e(0xdb5bc05b1bc08080), C64e(0x80858a850a8a0505),
+	C64e(0xd3ecadec7ead3f3f), C64e(0xfedfbcdf42bc2121),
+	C64e(0xa8d848d8e0487070), C64e(0xfd0c040cf904f1f1),
+	C64e(0x197adf7ac6df6363), C64e(0x2f58c158eec17777),
+	C64e(0x309f759f4575afaf), C64e(0xe7a563a584634242),
+	C64e(0x7050305040302020), C64e(0xcb2e1a2ed11ae5e5),
+	C64e(0xef120e12e10efdfd), C64e(0x08b76db7656dbfbf),
+	C64e(0x55d44cd4194c8181), C64e(0x243c143c30141818),
+	C64e(0x795f355f4c352626), C64e(0xb2712f719d2fc3c3),
+	C64e(0x8638e13867e1bebe), C64e(0xc8fda2fd6aa23535),
+	C64e(0xc74fcc4f0bcc8888), C64e(0x654b394b5c392e2e),
+	C64e(0x6af957f93d579393), C64e(0x580df20daaf25555),
+	C64e(0x619d829de382fcfc), C64e(0xb3c947c9f4477a7a),
+	C64e(0x27efacef8bacc8c8), C64e(0x8832e7326fe7baba),
+	C64e(0x4f7d2b7d642b3232), C64e(0x42a495a4d795e6e6),
+	C64e(0x3bfba0fb9ba0c0c0), C64e(0xaab398b332981919),
+	C64e(0xf668d16827d19e9e), C64e(0x22817f815d7fa3a3),
+	C64e(0xeeaa66aa88664444), C64e(0xd6827e82a87e5454),
+	C64e(0xdde6abe676ab3b3b), C64e(0x959e839e16830b0b),
+	C64e(0xc945ca4503ca8c8c), C64e(0xbc7b297b9529c7c7),
+	C64e(0x056ed36ed6d36b6b), C64e(0x6c443c44503c2828),
+	C64e(0x2c8b798b5579a7a7), C64e(0x813de23d63e2bcbc),
+	C64e(0x31271d272c1d1616), C64e(0x379a769a4176adad),
+	C64e(0x964d3b4dad3bdbdb), C64e(0x9efa56fac8566464),
+	C64e(0xa6d24ed2e84e7474), C64e(0x36221e22281e1414),
+	C64e(0xe476db763fdb9292), C64e(0x121e0a1e180a0c0c),
+	C64e(0xfcb46cb4906c4848), C64e(0x8f37e4376be4b8b8),
+	C64e(0x78e75de7255d9f9f), C64e(0x0fb26eb2616ebdbd),
+	C64e(0x692aef2a86ef4343), C64e(0x35f1a6f193a6c4c4),
+	C64e(0xdae3a8e372a83939), C64e(0xc6f7a4f762a43131),
+	C64e(0x8a593759bd37d3d3), C64e(0x74868b86ff8bf2f2),
+	C64e(0x83563256b132d5d5), C64e(0x4ec543c50d438b8b),
+	C64e(0x85eb59ebdc596e6e), C64e(0x18c2b7c2afb7dada),
+	C64e(0x8e8f8c8f028c0101), C64e(0x1dac64ac7964b1b1),
+	C64e(0xf16dd26d23d29c9c), C64e(0x723be03b92e04949),
+	C64e(0x1fc7b4c7abb4d8d8), C64e(0xb915fa1543faacac),
+	C64e(0xfa090709fd07f3f3), C64e(0xa06f256f8525cfcf),
+	C64e(0x20eaafea8fafcaca), C64e(0x7d898e89f38ef4f4),
+	C64e(0x6720e9208ee94747), C64e(0x3828182820181010),
+	C64e(0x0b64d564ded56f6f), C64e(0x73838883fb88f0f0),
+	C64e(0xfbb16fb1946f4a4a), C64e(0xca967296b8725c5c),
+	C64e(0x546c246c70243838), C64e(0x5f08f108aef15757),
+	C64e(0x2152c752e6c77373), C64e(0x64f351f335519797),
+	C64e(0xae6523658d23cbcb), C64e(0x25847c84597ca1a1),
+	C64e(0x57bf9cbfcb9ce8e8), C64e(0x5d6321637c213e3e),
+	C64e(0xea7cdd7c37dd9696), C64e(0x1e7fdc7fc2dc6161),
+	C64e(0x9c9186911a860d0d), C64e(0x9b9485941e850f0f),
+	C64e(0x4bab90abdb90e0e0), C64e(0xbac642c6f8427c7c),
+	C64e(0x2657c457e2c47171), C64e(0x29e5aae583aacccc),
+	C64e(0xe373d8733bd89090), C64e(0x090f050f0c050606),
+	C64e(0xf4030103f501f7f7), C64e(0x2a36123638121c1c),
+	C64e(0x3cfea3fe9fa3c2c2), C64e(0x8be15fe1d45f6a6a),
+	C64e(0xbe10f91047f9aeae), C64e(0x026bd06bd2d06969),
+	C64e(0xbfa891a82e911717), C64e(0x71e858e829589999),
+	C64e(0x5369276974273a3a), C64e(0xf7d0b9d04eb92727),
+	C64e(0x91483848a938d9d9), C64e(0xde351335cd13ebeb),
+	C64e(0xe5ceb3ce56b32b2b), C64e(0x7755335544332222),
+	C64e(0x04d6bbd6bfbbd2d2), C64e(0x399070904970a9a9),
+	C64e(0x878089800e890707), C64e(0xc1f2a7f266a73333),
+	C64e(0xecc1b6c15ab62d2d), C64e(0x5a66226678223c3c),
+	C64e(0xb8ad92ad2a921515), C64e(0xa96020608920c9c9),
+	C64e(0x5cdb49db15498787), C64e(0xb01aff1a4fffaaaa),
+	C64e(0xd8887888a0785050), C64e(0x2b8e7a8e517aa5a5),
+	C64e(0x898a8f8a068f0303), C64e(0x4a13f813b2f85959),
+	C64e(0x929b809b12800909), C64e(0x2339173934171a1a),
+	C64e(0x1075da75cada6565), C64e(0x84533153b531d7d7),
+	C64e(0xd551c65113c68484), C64e(0x03d3b8d3bbb8d0d0),
+	C64e(0xdc5ec35e1fc38282), C64e(0xe2cbb0cb52b02929),
+	C64e(0xc3997799b4775a5a), C64e(0x2d3311333c111e1e),
+	C64e(0x3d46cb46f6cb7b7b), C64e(0xb71ffc1f4bfca8a8),
+	C64e(0x0c61d661dad66d6d), C64e(0x624e3a4e583a2c2c)
+};
+
+#endif
+
+#define DECL_STATE_SMALL \
+	sph_u64 H[8];
+
+#define READ_STATE_SMALL(sc)   do { \
+		memcpy(H, (sc)->state.wide, sizeof H); \
+	} while (0)
+
+#define WRITE_STATE_SMALL(sc)   do { \
+		memcpy((sc)->state.wide, H, sizeof H); \
+	} while (0)
+
+#if SPH_SMALL_FOOTPRINT_GROESTL
+
+#define RSTT(d, a, b0, b1, b2, b3, b4, b5, b6, b7)   do { \
+		t[d] = T0[B64_0(a[b0])] \
+			^ R64(T0[B64_1(a[b1])],  8) \
+			^ R64(T0[B64_2(a[b2])], 16) \
+			^ R64(T0[B64_3(a[b3])], 24) \
+			^ T4[B64_4(a[b4])] \
+			^ R64(T4[B64_5(a[b5])],  8) \
+			^ R64(T4[B64_6(a[b6])], 16) \
+			^ R64(T4[B64_7(a[b7])], 24); \
+	} while (0)
+
+#else
+
+#define RSTT(d, a, b0, b1, b2, b3, b4, b5, b6, b7)   do { \
+		t[d] = T0[B64_0(a[b0])] \
+			^ T1[B64_1(a[b1])] \
+			^ T2[B64_2(a[b2])] \
+			^ T3[B64_3(a[b3])] \
+			^ T4[B64_4(a[b4])] \
+			^ T5[B64_5(a[b5])] \
+			^ T6[B64_6(a[b6])] \
+			^ T7[B64_7(a[b7])]; \
+	} while (0)
+
+#endif
+
+#define ROUND_SMALL_P(a, r)   do { \
+		sph_u64 t[8]; \
+		a[0] ^= PC64(0x00, r); \
+		a[1] ^= PC64(0x10, r); \
+		a[2] ^= PC64(0x20, r); \
+		a[3] ^= PC64(0x30, r); \
+		a[4] ^= PC64(0x40, r); \
+		a[5] ^= PC64(0x50, r); \
+		a[6] ^= PC64(0x60, r); \
+		a[7] ^= PC64(0x70, r); \
+		RSTT(0, a, 0, 1, 2, 3, 4, 5, 6, 7); \
+		RSTT(1, a, 1, 2, 3, 4, 5, 6, 7, 0); \
+		RSTT(2, a, 2, 3, 4, 5, 6, 7, 0, 1); \
+		RSTT(3, a, 3, 4, 5, 6, 7, 0, 1, 2); \
+		RSTT(4, a, 4, 5, 6, 7, 0, 1, 2, 3); \
+		RSTT(5, a, 5, 6, 7, 0, 1, 2, 3, 4); \
+		RSTT(6, a, 6, 7, 0, 1, 2, 3, 4, 5); \
+		RSTT(7, a, 7, 0, 1, 2, 3, 4, 5, 6); \
+		a[0] = t[0]; \
+		a[1] = t[1]; \
+		a[2] = t[2]; \
+		a[3] = t[3]; \
+		a[4] = t[4]; \
+		a[5] = t[5]; \
+		a[6] = t[6]; \
+		a[7] = t[7]; \
+	} while (0)
+
+#define ROUND_SMALL_Q(a, r)   do { \
+		sph_u64 t[8]; \
+		a[0] ^= QC64(0x00, r); \
+		a[1] ^= QC64(0x10, r); \
+		a[2] ^= QC64(0x20, r); \
+		a[3] ^= QC64(0x30, r); \
+		a[4] ^= QC64(0x40, r); \
+		a[5] ^= QC64(0x50, r); \
+		a[6] ^= QC64(0x60, r); \
+		a[7] ^= QC64(0x70, r); \
+		RSTT(0, a, 1, 3, 5, 7, 0, 2, 4, 6); \
+		RSTT(1, a, 2, 4, 6, 0, 1, 3, 5, 7); \
+		RSTT(2, a, 3, 5, 7, 1, 2, 4, 6, 0); \
+		RSTT(3, a, 4, 6, 0, 2, 3, 5, 7, 1); \
+		RSTT(4, a, 5, 7, 1, 3, 4, 6, 0, 2); \
+		RSTT(5, a, 6, 0, 2, 4, 5, 7, 1, 3); \
+		RSTT(6, a, 7, 1, 3, 5, 6, 0, 2, 4); \
+		RSTT(7, a, 0, 2, 4, 6, 7, 1, 3, 5); \
+		a[0] = t[0]; \
+		a[1] = t[1]; \
+		a[2] = t[2]; \
+		a[3] = t[3]; \
+		a[4] = t[4]; \
+		a[5] = t[5]; \
+		a[6] = t[6]; \
+		a[7] = t[7]; \
+	} while (0)
+
+#if SPH_SMALL_FOOTPRINT_GROESTL
+
+#define PERM_SMALL_P(a)   do { \
+		int r; \
+		for (r = 0; r < 10; r ++) \
+			ROUND_SMALL_P(a, r); \
+	} while (0)
+
+#define PERM_SMALL_Q(a)   do { \
+		int r; \
+		for (r = 0; r < 10; r ++) \
+			ROUND_SMALL_Q(a, r); \
+	} while (0)
+
+#else
+
+/*
+ * Apparently, unrolling more than that confuses GCC, resulting in
+ * lower performance, even though L1 cache would be no problem.
+ */
+#define PERM_SMALL_P(a)   do { \
+		int r; \
+		for (r = 0; r < 10; r += 2) { \
+			ROUND_SMALL_P(a, r + 0); \
+			ROUND_SMALL_P(a, r + 1); \
+		} \
+	} while (0)
+
+#define PERM_SMALL_Q(a)   do { \
+		int r; \
+		for (r = 0; r < 10; r += 2) { \
+			ROUND_SMALL_Q(a, r + 0); \
+			ROUND_SMALL_Q(a, r + 1); \
+		} \
+	} while (0)
+
+#endif
+
+#define COMPRESS_SMALL   do { \
+		sph_u64 g[8], m[8]; \
+		size_t u; \
+		for (u = 0; u < 8; u ++) { \
+			m[u] = dec64e_aligned(buf + (u << 3)); \
+			g[u] = m[u] ^ H[u]; \
+		} \
+		PERM_SMALL_P(g); \
+		PERM_SMALL_Q(m); \
+		for (u = 0; u < 8; u ++) \
+			H[u] ^= g[u] ^ m[u]; \
+	} while (0)
+
+#define FINAL_SMALL   do { \
+		sph_u64 x[8]; \
+		size_t u; \
+		memcpy(x, H, sizeof x); \
+		PERM_SMALL_P(x); \
+		for (u = 0; u < 8; u ++) \
+			H[u] ^= x[u]; \
+	} while (0)
+
+#define DECL_STATE_BIG \
+	sph_u64 H[16];
+
+#define READ_STATE_BIG(sc)   do { \
+		memcpy(H, (sc)->state.wide, sizeof H); \
+	} while (0)
+
+#define WRITE_STATE_BIG(sc)   do { \
+		memcpy((sc)->state.wide, H, sizeof H); \
+	} while (0)
+
+#if SPH_SMALL_FOOTPRINT_GROESTL
+
+#define RBTT(d, a, b0, b1, b2, b3, b4, b5, b6, b7)   do { \
+		t[d] = T0[B64_0(a[b0])] \
+			^ R64(T0[B64_1(a[b1])],  8) \
+			^ R64(T0[B64_2(a[b2])], 16) \
+			^ R64(T0[B64_3(a[b3])], 24) \
+			^ T4[B64_4(a[b4])] \
+			^ R64(T4[B64_5(a[b5])],  8) \
+			^ R64(T4[B64_6(a[b6])], 16) \
+			^ R64(T4[B64_7(a[b7])], 24); \
+	} while (0)
+
+#else
+
+#define RBTT(d, a, b0, b1, b2, b3, b4, b5, b6, b7)   do { \
+		t[d] = T0[B64_0(a[b0])] \
+			^ T1[B64_1(a[b1])] \
+			^ T2[B64_2(a[b2])] \
+			^ T3[B64_3(a[b3])] \
+			^ T4[B64_4(a[b4])] \
+			^ T5[B64_5(a[b5])] \
+			^ T6[B64_6(a[b6])] \
+			^ T7[B64_7(a[b7])]; \
+	} while (0)
+
+#endif
+
+#if SPH_SMALL_FOOTPRINT_GROESTL
+
+#define ROUND_BIG_P(a, r)   do { \
+		sph_u64 t[16]; \
+		size_t u; \
+		a[0x0] ^= PC64(0x00, r); \
+		a[0x1] ^= PC64(0x10, r); \
+		a[0x2] ^= PC64(0x20, r); \
+		a[0x3] ^= PC64(0x30, r); \
+		a[0x4] ^= PC64(0x40, r); \
+		a[0x5] ^= PC64(0x50, r); \
+		a[0x6] ^= PC64(0x60, r); \
+		a[0x7] ^= PC64(0x70, r); \
+		a[0x8] ^= PC64(0x80, r); \
+		a[0x9] ^= PC64(0x90, r); \
+		a[0xA] ^= PC64(0xA0, r); \
+		a[0xB] ^= PC64(0xB0, r); \
+		a[0xC] ^= PC64(0xC0, r); \
+		a[0xD] ^= PC64(0xD0, r); \
+		a[0xE] ^= PC64(0xE0, r); \
+		a[0xF] ^= PC64(0xF0, r); \
+		for (u = 0; u < 16; u += 4) { \
+			RBTT(u + 0, a, u + 0, (u + 1) & 0xF, \
+				(u + 2) & 0xF, (u + 3) & 0xF, (u + 4) & 0xF, \
+				(u + 5) & 0xF, (u + 6) & 0xF, (u + 11) & 0xF); \
+			RBTT(u + 1, a, u + 1, (u + 2) & 0xF, \
+				(u + 3) & 0xF, (u + 4) & 0xF, (u + 5) & 0xF, \
+				(u + 6) & 0xF, (u + 7) & 0xF, (u + 12) & 0xF); \
+			RBTT(u + 2, a, u + 2, (u + 3) & 0xF, \
+				(u + 4) & 0xF, (u + 5) & 0xF, (u + 6) & 0xF, \
 				(u + 7) & 0xF, (u + 8) & 0xF, (u + 13) & 0xF); \
 			RBTT(u + 3, a, u + 3, (u + 4) & 0xF, \
 				(u + 5) & 0xF, (u + 6) & 0xF, (u + 7) & 0xF, \

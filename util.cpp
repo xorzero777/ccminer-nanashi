@@ -435,7 +435,7 @@ static json_t *json_rpc_call(CURL *curl, const char *url,
 	char *httpdata;
 	char len_hdr[64], hashrate_hdr[64];
 	char curl_err_str[CURL_ERROR_SIZE] = { 0 };
-	long timeout = longpoll ? opt_timeout : opt_timeout/2;
+	long timeout = longpoll ? opt_timeout : opt_timeout / 2;
 	struct header_info hi = { 0 };
 	bool lp_scanning = longpoll_scan && !have_longpoll;
 
@@ -486,7 +486,7 @@ static json_t *json_rpc_call(CURL *curl, const char *url,
 	upload_data.buf = rpc_req;
 	upload_data.len = strlen(rpc_req);
 	upload_data.pos = 0;
-	sprintf(len_hdr, "Content-Length: %lu", (unsigned long) upload_data.len);
+	sprintf(len_hdr, "Content-Length: %lu", (unsigned long)upload_data.len);
 	sprintf(hashrate_hdr, "X-Mining-Hashrate: %llu", (unsigned long long) global_hashrate);
 
 	headers = curl_slist_append(headers, "Content-Type: application/json");
@@ -511,8 +511,8 @@ static json_t *json_rpc_call(CURL *curl, const char *url,
 
 	/* If X-Stratum was found, activate Stratum */
 	if (want_stratum && hi.stratum_url &&
-	    !strncasecmp(hi.stratum_url, "stratum+tcp://", 14) &&
-	    !(opt_proxy && opt_proxy_type == CURLPROXY_HTTP)) {
+		!strncasecmp(hi.stratum_url, "stratum+tcp://", 14) &&
+		!(opt_proxy && opt_proxy_type == CURLPROXY_HTTP)) {
 		have_stratum = true;
 		tq_push(thr_info[stratum_thr_id].q, hi.stratum_url);
 		hi.stratum_url = NULL;
@@ -531,7 +531,7 @@ static json_t *json_rpc_call(CURL *curl, const char *url,
 		goto err_out;
 	}
 
-	httpdata = (char*) all_data.buf;
+	httpdata = (char*)all_data.buf;
 
 	if (*httpdata != '{' && *httpdata != '[') {
 		long errcode = 0;
@@ -557,12 +557,13 @@ static json_t *json_rpc_call(CURL *curl, const char *url,
 	}
 
 	/* JSON-RPC valid response returns a non-null 'result',
-	 * and a null 'error'. */
+	* and a null 'error'. */
 	res_val = json_object_get(val, "result");
 	err_val = json_object_get(val, "error");
 
-	if (!res_val || json_is_null(res_val) ||
-	    (err_val && !json_is_null(err_val))) {
+	if (!res_val ||
+		//if (!res_val || json_is_null(res_val) ||
+		(err_val && !json_is_null(err_val))) {
 		char *s = NULL;
 
 		if (err_val) {
@@ -570,7 +571,7 @@ static json_t *json_rpc_call(CURL *curl, const char *url,
 			json_t *msg = json_object_get(err_val, "message");
 			json_t *err_code = json_object_get(err_val, "code");
 			if (curl_err && json_integer_value(err_code))
-				*curl_err = (int) json_integer_value(err_code);
+				*curl_err = (int)json_integer_value(err_code);
 
 			if (json_is_string(msg)) {
 				free(s);
@@ -619,7 +620,7 @@ json_t *json_rpc_call_pool(CURL *curl, struct pool_infos *pool, const char *req,
 	char userpass[512];
 	// todo, malloc and store that in pool array
 	snprintf(userpass, sizeof(userpass), "%s%c%s", pool->user,
-		strlen(pool->pass)?':':'\0', pool->pass);
+		strlen(pool->pass) ? ':' : '\0', pool->pass);
 
 	return json_rpc_call(curl, pool->url, userpass, req, longpoll_scan, false, false, curl_err);
 }
@@ -629,7 +630,7 @@ json_t *json_rpc_longpoll(CURL *curl, char *lp_url, struct pool_infos *pool, con
 {
 	char userpass[512];
 	snprintf(userpass, sizeof(userpass), "%s%c%s", pool->user,
-		strlen(pool->pass)?':':'\0', pool->pass);
+		strlen(pool->pass) ? ':' : '\0', pool->pass);
 
 	// on pool rotate by time-limit, this keepalive can be a problem
 	bool keepalive = pool->time_limit == 0 || pool->time_limit > opt_timeout;
@@ -856,7 +857,7 @@ void work_set_target(struct work* work, double diff)
 // Only used by longpoll pools
 double target_to_diff(uint32_t* target)
 {
-	uchar* tgt = (uchar*) target;
+	uchar* tgt = (uchar*)target;
 	uint64_t m =
 		(uint64_t)tgt[29] << 56 |
 		(uint64_t)tgt[28] << 48 |
@@ -864,13 +865,13 @@ double target_to_diff(uint32_t* target)
 		(uint64_t)tgt[26] << 32 |
 		(uint64_t)tgt[25] << 24 |
 		(uint64_t)tgt[24] << 16 |
-		(uint64_t)tgt[23] << 8  |
+		(uint64_t)tgt[23] << 8 |
 		(uint64_t)tgt[22] << 0;
 
 	if (!m)
 		return 0.;
 	else
-		return (double)0x0000ffff00000000/m;
+		return (double)0x0000ffff00000000 / m;
 }
 
 #ifdef WIN32
@@ -1415,21 +1416,21 @@ static uint32_t getblocheight(struct stratum_ctx *sctx)
 	uint8_t hlen = 0, *p, *m;
 
 	// find 0xffff tag
-	p = (uint8_t*) sctx->job.coinbase + 32;
+	p = (uint8_t*)sctx->job.coinbase + 32;
 	m = p + 128;
 	while (*p != 0xff && p < m) p++;
 	while (*p == 0xff && p < m) p++;
-	if (*(p-1) == 0xff && *(p-2) == 0xff) {
+	if (*(p - 1) == 0xff && *(p - 2) == 0xff) {
 		p++; hlen = *p;
 		p++; height = le16dec(p);
 		p += 2;
 		switch (hlen) {
-			case 4:
-				height += 0x10000UL * le16dec(p);
-				break;
-			case 3:
-				height += 0x10000UL * (*p);
-				break;
+		case 4:
+			height += 0x10000UL * le16dec(p);
+			break;
+		case 3:
+			height += 0x10000UL * (*p);
+			break;
 		}
 	}
 	return height;

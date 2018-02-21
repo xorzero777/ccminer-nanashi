@@ -82,6 +82,8 @@ enum {
 };
 #endif
 
+#define NONCES_MAX	8
+
 typedef unsigned char uchar;
 
 #undef unlikely
@@ -742,6 +744,8 @@ struct work {
 	uint8_t extra[1388];
 	char *txs2;
 	char *workid;
+
+	
 };
 
 #define POK_BOOL_MASK 0x00008000
@@ -765,7 +769,7 @@ struct pool_infos {
 	// credentials
 	char url[512];
 	char short_url[64];
-	char user[192];
+	char user[64];
 	char pass[384];
 	// config options
 	double max_diff;
