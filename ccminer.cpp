@@ -55,7 +55,11 @@
 BOOL WINAPI ConsoleHandler(DWORD);
 #endif
 
+<<<<<<< HEAD
 #define PROGRAM_NAME		"ccminer solo"
+=======
+#define PROGRAM_NAME		"ccminer"
+>>>>>>> 2591b33ce0d7a8007351443e095cb7ba631ac721
 #define LP_SCANTIME		60
 #define HEAVYCOIN_BLKHDR_SZ		84
 #define MNR_BLKHDR_SZ 80
@@ -299,7 +303,10 @@ Options:\n\
 			x13         X13 (MaruCoin)\n\
 			x14         X14\n\
 			x15         X15\n\
+<<<<<<< HEAD
 			x16r        X16R (Raven)\n\
+=======
+>>>>>>> 2591b33ce0d7a8007351443e095cb7ba631ac721
 			x17         X17\n\
 			wildkeccak  Boolberry\n\
 			zr5         ZR5 (ZiftrCoin)\n\
@@ -1617,8 +1624,13 @@ start:
 	}
 
 	if (allow_gbt && allow_getwork && !val && err == CURLE_OK) {
+<<<<<<< HEAD
 		applog(LOG_NOTICE, "getblocktemplate failed, retry getblocktemplate");
 		//allow_gbt = false;
+=======
+		applog(LOG_NOTICE, "getblocktemplate failed, falling back to getwork");
+		allow_gbt = false;
+>>>>>>> 2591b33ce0d7a8007351443e095cb7ba631ac721
 		goto start;
 	}
 
@@ -2033,9 +2045,12 @@ static bool stratum_gen_work(struct stratum_ctx *sctx, struct work *work)
 	case ALGO_FRESH:
 	case ALGO_FUGUE256:
 	case ALGO_GROESTL:
+<<<<<<< HEAD
 	case ALGO_X16R:
 		work_set_target(work, sctx->job.diff / (256.0 * opt_difficulty));
 		break;
+=======
+>>>>>>> 2591b33ce0d7a8007351443e095cb7ba631ac721
 	case ALGO_LYRA2v2:
 		work_set_target(work, sctx->job.diff / (256.0 * opt_difficulty));
 		break;
@@ -2849,9 +2864,12 @@ static void *miner_thread(void *userdata)
 		case ALGO_X15:
 			rc = scanhash_x15(thr_id, &work, max_nonce, &hashes_done);
 			break;
+<<<<<<< HEAD
 		case ALGO_X16R:
 			rc = scanhash_x16r(thr_id, &work, max_nonce, &hashes_done);
 			break;
+=======
+>>>>>>> 2591b33ce0d7a8007351443e095cb7ba631ac721
 		case ALGO_X17:
 			rc = scanhash_x17(thr_id, &work, max_nonce, &hashes_done);
 			break;
