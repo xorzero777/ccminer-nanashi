@@ -79,16 +79,13 @@ void hashlog_remember_submit(struct work* work, uint32_t nonce)
 	hashlog_data data;
 
 	memset(&data, 0, sizeof(data));
-	data.nonce_id = work->submit_nonce_id;
 	data.scanned_from = work->scanned_from;
-	data.scanned_to = work->scanned_to;
-	data.sharediff = work->sharediff[data.nonce_id];
+	data.scanned_to = nonce;
 	data.height = work->height;
-	data.njobid = (uint32_t) njobid;
-	data.tm_add = data.tm_upd = data.tm_sent = (uint32_t) time(NULL);
-	data.npool = (uint8_t) cur_pooln;
+	data.njobid = (uint32_t)njobid;
+	data.tm_add = data.tm_upd = data.tm_sent = (uint32_t)time(NULL);
+	data.npool = (uint8_t)cur_pooln;
 	data.pool_type = pools[cur_pooln].type;
-	data.job_nonce_id = (uint8_t) stratum.job.shares_count;
 	tlastshares[key] = data;
 }
 
@@ -169,14 +166,14 @@ uint64_t hashlog_get_scan_range(char* jobid)
  */
 uint32_t hashlog_get_last_sent(char* jobid)
 {
+
 	uint32_t nonce = 0;
-	uint64_t njobid = jobid ? hextouint(jobid) : UINT32_MAX;
+	uint64_t njobid = hextouint(jobid);
 	uint64_t keypfx = (njobid << 32);
-	std::map<uint64_t, hashlog_data>::reverse_iterator i = tlastshares.rbegin();
-	while (i != tlastshares.rend()) {
-		if ((keypfx & i->first) == keypfx && i->second.tm_sent) {
+	std::map<uint64_t, hashlog_data>::iterator i = tlastshares.begin();
+	while (i != tlastshares.end()) {
+		if ((keypfx & i->first) == keypfx && i->second.tm_sent > 0) {
 			nonce = LO_DWORD(i->first);
-			break;
 		}
 		i++;
 	}
