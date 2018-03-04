@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -21,12 +21,13 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{36DC07F9-A4A6-4877-A146-1B960083CF6F}</ProjectGuid>
     <RootNamespace>ccminer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CLRSupport>false</CLRSupport>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -269,7 +270,7 @@
     <ClCompile Include="neoscrypt\neoscrypt-cpu.c" />
     <ClInclude Include="neoscrypt\cuda_vectors.h" />
     <ClInclude Include="x11\cuda_x11_simd512_sm2.cuh" />
-	<ClInclude Include="x16r\cuda_x16r.h" />
+    <ClInclude Include="x16r\cuda_x16r.h" />
     <CudaCompile Include="Algo256\bmw.cu" />
     <CudaCompile Include="Algo256\cuda_bmw.cu">
       <MaxRegCount>76</MaxRegCount>
@@ -436,7 +437,7 @@
     <CudaCompile Include="sha256\sha256d.cu" />
     <CudaCompile Include="sha256\cuda_sha256t.cu" />
     <CudaCompile Include="sha256\sha256t.cu" />
-	<CudaCompile Include="x15\cuda_x15_whirlpool_sm3.cu" />
+    <CudaCompile Include="x15\cuda_x15_whirlpool_sm3.cu" />
     <CudaCompile Include="x16r\x16r.cu" />
     <CudaCompile Include="x16r\cuda_x16_echo512.cu" />
     <CudaCompile Include="x16r\cuda_x16_fugue512.cu" />

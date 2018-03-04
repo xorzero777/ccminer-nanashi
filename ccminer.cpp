@@ -55,7 +55,7 @@
 BOOL WINAPI ConsoleHandler(DWORD);
 #endif
 
-#define PROGRAM_NAME		"ccminer"
+#define PROGRAM_NAME		"ccminer solo"
 #define LP_SCANTIME		60
 #define HEAVYCOIN_BLKHDR_SZ		84
 #define MNR_BLKHDR_SZ 80
@@ -1258,8 +1258,8 @@ static bool gbt_work_decode_full(const json_t *val, struct work *work)
 			version = (version & ~0xffU) | BLOCK_VERSION_CURRENT;
 		}
 		else if (allow_gbt && allow_getwork && !version_force) {
-			applog(LOG_DEBUG, "Switching to getwork, gbt version %d", version);
-			allow_gbt = false;
+			applog(LOG_DEBUG, "retry GBT, gbt version %d", version);
+			//allow_gbt = false;
 			goto out;
 		}
 		else if (!version_force) {
@@ -1617,8 +1617,8 @@ start:
 	}
 
 	if (allow_gbt && allow_getwork && !val && err == CURLE_OK) {
-		applog(LOG_NOTICE, "getblocktemplate failed, falling back to getwork");
-		allow_gbt = false;
+		applog(LOG_NOTICE, "getblocktemplate failed, retrying GBT");
+		//allow_gbt = false;
 		goto start;
 	}
 
