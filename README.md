@@ -12,6 +12,8 @@ Fork by tpruvot@github with X14,X15,X17,Blake256,BlakeCoin,Lyra2RE,Skein,ZR5 and
    ETH donation address: 0x04955CCE2Cb5e0E4a7a4F6ba96686A25374FB1Bd
    
    LTC donation address: LTUdZR9LZWuM5Xi2cLTG8qqbQ3GfLPnoZ2
+   
+   RVN donation address: RP3qhgGWe6DmDVPaWjERVLHrhRCNYM6jaK
 
 A part of the recent algos were originally written by [djm34](https://github.com/djm34).
 
