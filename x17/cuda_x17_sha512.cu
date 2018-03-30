@@ -169,6 +169,7 @@ void x17_sha512_cpu_hash_64(int thr_id, uint32_t threads, uint32_t startNounce, 
 
 	x17_sha512_gpu_hash_64 <<<grid, block>>> (threads, (uint64_t*)d_hash);
 }
+
 __constant__
 static uint64_t c_PaddedMessage80[10];
 
@@ -180,8 +181,8 @@ void x16_sha512_gpu_hash_80(const uint32_t threads, const uint32_t startNonce, u
 	if (thread < threads)
 	{
 		uint64_t W[80];
-#pragma unroll
-		for (int i = 0; i < 9; i++) {
+		#pragma unroll
+		for (int i = 0; i < 9; i ++) {
 			W[i] = SWAP64(c_PaddedMessage80[i]);
 		}
 		const uint32_t nonce = startNonce + thread;
@@ -190,16 +191,16 @@ void x16_sha512_gpu_hash_80(const uint32_t threads, const uint32_t startNonce, u
 		W[9] = cuda_swab64(W[9]);
 		W[10] = 0x8000000000000000;
 
-#pragma unroll
+		#pragma unroll
 		for (int i = 11; i<15; i++) {
 			W[i] = 0U;
 		}
 		W[15] = 0x0000000000000280;
 
-#pragma unroll 64
-		for (int i = 16; i < 80; i++) {
-			W[i] = SSG5_1(W[i - 2]) + W[i - 7];
-			W[i] += SSG5_0(W[i - 15]) + W[i - 16];
+		#pragma unroll 64
+		for (int i = 16; i < 80; i ++) {
+			W[i] = SSG5_1(W[i-2]) + W[i-7];
+			W[i] += SSG5_0(W[i-15]) + W[i-16];
 		}
 
 		const uint64_t IV512[8] = {
@@ -210,20 +211,20 @@ void x16_sha512_gpu_hash_80(const uint32_t threads, const uint32_t startNonce, u
 		};
 
 		uint64_t r[8];
-#pragma unroll
+		#pragma unroll
 		for (int i = 0; i < 8; i++) {
 			r[i] = IV512[i];
 		}
 
-#pragma unroll
+		#pragma unroll
 		for (int i = 0; i < 80; i++) {
-			SHA3_STEP(c_WB, r, W, i & 7, i);
+			SHA3_STEP(c_WB, r, W, i&7, i);
 		}
 
 		const uint64_t hashPosition = thread;
 		uint64_t *pHash = &g_hash[hashPosition << 3];
-#pragma unroll
-		for (int u = 0; u < 8; u++) {
+		#pragma unroll
+		for (int u = 0; u < 8; u ++) {
 			pHash[u] = SWAP64(r[u] + IV512[u]);
 		}
 	}
@@ -234,10 +235,10 @@ void x16_sha512_cuda_hash_80(int thr_id, const uint32_t threads, const uint32_t 
 {
 	const uint32_t threadsperblock = 256;
 
-	dim3 grid((threads + threadsperblock - 1) / threadsperblock);
+	dim3 grid((threads + threadsperblock-1)/threadsperblock);
 	dim3 block(threadsperblock);
 
-	x16_sha512_gpu_hash_80 << <grid, block >> > (threads, startNounce, (uint64_t*)d_hash);
+	x16_sha512_gpu_hash_80 <<<grid, block >>> (threads, startNounce, (uint64_t*)d_hash);
 }
 
 __host__
