@@ -614,6 +614,9 @@
     <ClInclude Include="cuda_vectors_alexis.h">
       <Filter>Header Files\CUDA</Filter>
     </ClInclude>
+    <ClInclude Include="lyra2\cuda_lyra2_vectors.h">
+      <Filter>Header Files\lyra2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="cuda.cpp">

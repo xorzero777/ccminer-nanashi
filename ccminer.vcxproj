@@ -267,6 +267,7 @@
     <ClInclude Include="cuda_vectors_alexis.h" />
     <ClInclude Include="equi\eqcuda.hpp" />
     <ClInclude Include="equi\equihash.h" />
+    <ClInclude Include="lyra2\cuda_lyra2_vectors.h" />
     <ClInclude Include="neoscrypt\neoscrypt.h" />
     <ClCompile Include="neoscrypt\neoscrypt.cpp" />
     <ClCompile Include="neoscrypt\neoscrypt-cpu.c" />
