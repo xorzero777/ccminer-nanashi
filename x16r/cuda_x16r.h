@@ -7,7 +7,8 @@ extern void x13_fugue512_cpu_hash_64_alexis(int thr_id, uint32_t threads, uint32
 extern void x14_shabal512_cpu_hash_64_alexis(int thr_id, uint32_t threads, uint32_t *d_hash);
 
 extern void x13_hamsi512_cpu_init(int thr_id, uint32_t threads);
-extern void x13_hamsi512_cpu_hash_64(int thr_id, uint32_t threads, uint32_t startNonce, uint32_t *d_nonceVector, uint32_t *d_hash, int order);
+//extern void x13_hamsi512_cpu_hash_64(int thr_id, uint32_t threads, uint32_t startNonce, uint32_t *d_nonceVector, uint32_t *d_hash, int order);
+extern void x13_hamsi512_cpu_hash_64_alexis(int thr_id, uint32_t threads, uint32_t *d_hash);
 
 extern void x13_fugue512_cpu_init(int thr_id, uint32_t threads);
 extern void x13_fugue512_cpu_hash_64(int thr_id, uint32_t threads, uint32_t startNonce, uint32_t *d_nonceVector, uint32_t *d_hash, int order);
@@ -21,7 +22,7 @@ extern void x15_whirlpool_cpu_hash_64(int thr_id, uint32_t threads, uint32_t sta
 extern void x15_whirlpool_cpu_free(int thr_id);
 
 extern void x17_sha512_cpu_init(int thr_id, uint32_t threads);
-extern void x17_sha512_cpu_hash_64(int thr_id, uint32_t threads, uint32_t startNonce, uint32_t *d_hash);
+extern void x17_sha512_cpu_hash_64(int thr_id, uint32_t threads, uint32_t *d_hash);
 
 extern void x17_haval256_cpu_init(int thr_id, uint32_t threads);
 extern void x17_haval256_cpu_hash_64(int thr_id, uint32_t threads, uint32_t startNonce, uint32_t *d_hash, const int outlen);

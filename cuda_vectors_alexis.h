@@ -629,7 +629,7 @@ static __device__ __forceinline__ ulonglong4 shuffle4(ulonglong4 var, int lane)
 	return var;
 #endif
 }
-
+/*
 #ifdef __CUDA_ARCH__
 __device__ __forceinline__
 uint32_t ROL8(const uint32_t a){
@@ -650,5 +650,5 @@ uint32_t ROL16(const uint32_t a){
     #define ROR8(u)  ROTR32(u, 8)
     #define ROL16(u) ROTL32(u,16)
 #endif
-
+*/
 #endif // #ifndef CUDA_LYRA_VECTOR_H
