@@ -1,6 +1,7 @@
 ccsolominer
 ==========
 
+
 Based on Christian Buchner's &amp; Christian H.'s CUDA project, no more active on github recently.
 
 ccsolominer is a merge of the current version of ccminer and the older nanashi solo fork. This brings optimized kernels and newer algorithms to a solo miner, while still having the same features as the current version.
