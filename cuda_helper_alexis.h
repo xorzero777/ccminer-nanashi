@@ -40,6 +40,13 @@ extern void cudaReportHardwareFailure(int thr_id, cudaError_t error, const char*
 extern __device__ __device_builtin__ void __syncthreads(void);
 extern __device__ __device_builtin__ void __threadfence(void);
 
+#define AS_U32(addr)   *((uint32_t*)(addr))
+#define AS_U64(addr)   *((uint64_t*)(addr))
+#define AS_UINT2(addr) *((uint2*)(addr))
+#define AS_UINT4(addr) *((uint4*)(addr))
+#define AS_UL2(addr)   *((ulonglong2*)(addr))
+
+
 #ifndef __CUDA_ARCH__
 // define blockDim and threadIdx for host
 extern const dim3 blockDim;
