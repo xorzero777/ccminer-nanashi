@@ -10,7 +10,7 @@
  */
 
 //#define _GNU_SOURCE
-#include <ccminer-config.h>
+#include <ccsolominer-config.h>
 
 #include <stdio.h>
 #include <stdlib.h>

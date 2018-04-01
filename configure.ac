@@ -1,10 +1,10 @@
-AC_INIT([ccminer], [2.2.5], [], [ccminer], [http://github.com/tpruvot/ccminer])
+AC_INIT([ccsolominer], [2.4.1], [], [ccsolominer], [https://github.com/beanjo55/ccminer-nanashi])
 
 AC_PREREQ([2.59c])
 AC_CANONICAL_SYSTEM
-AC_CONFIG_SRCDIR([ccminer.cpp])
+AC_CONFIG_SRCDIR([ccsolominer.cpp])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
-AC_CONFIG_HEADERS([ccminer-config.h])
+AC_CONFIG_HEADERS([ccsolominer-config.h])
 
 dnl Make sure anyone changing configure.ac/Makefile.am has a clue
 AM_MAINTAINER_MODE

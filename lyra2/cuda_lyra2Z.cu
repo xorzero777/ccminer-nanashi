@@ -271,7 +271,12 @@ void lyra2Z_gpu_hash_32_sm2(uint32_t threads, uint32_t startNounce, uint64_t *g_
 #else
 __global__ void lyra2Z_gpu_hash_32_sm2(uint32_t threads, uint32_t startNounce, uint64_t *g_hash, uint32_t *resNonces) {}
 #endif
-
+#if __CUDA_ARCH__ < 350
+__device__ void* DMatrix;
+#endif
+#if __CUDA_ARCH__ != 500 && __CUDA_ARCH__ > 350
+__device__ uint2 *DMatrix;
+#endif
 #if __CUDA_ARCH__ > 500
 
 #include "cuda_lyra2_vectors.h"
@@ -283,7 +288,7 @@ __global__ void lyra2Z_gpu_hash_32_sm2(uint32_t threads, uint32_t startNounce, u
 
 #define BUF_COUNT 0
 
-__device__ uint2 *DMatrix;
+
 
 __device__ __forceinline__
 void LD4S(uint2 res[3], const int row, const int col, const int thread, const int threads)
@@ -865,9 +870,7 @@ void lyra2Z_gpu_hash_32_3(uint32_t threads, uint32_t startNounce, uint2 *g_hash,
 	}
 }
 #else
-#if __CUDA_ARCH__ < 350
-__device__ void* DMatrix;
-#endif
+
 __global__ void lyra2Z_gpu_hash_32_1(uint32_t threads, uint32_t startNounce, uint2 *g_hash) {}
 __global__ void lyra2Z_gpu_hash_32_2(uint32_t threads, uint32_t startNounce, uint64_t *g_hash) {}
 __global__ void lyra2Z_gpu_hash_32_3(uint32_t threads, uint32_t startNounce, uint2 *g_hash, uint32_t *resNonces) {}

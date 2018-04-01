@@ -8,18 +8,18 @@ JANSSON_INCLUDES=
 endif
 
 EXTRA_DIST		= autogen.sh README.md README.txt LICENSE.txt \
-			  ccminer.sln ccminer.vcxproj ccminer.vcxproj.filters \
+			  ccsolominer.sln ccsolominer.vcxproj ccsolominer.vcxproj.filters \
 			  compat/gettimeofday.c compat/getopt/getopt_long.c
 
 SUBDIRS = compat
 
-bin_PROGRAMS = ccminer
+bin_PROGRAMS = ccsolominer
 
-ccminer_SOURCES	= elist.h miner.h compat.h \
+ccsolominer_SOURCES	= elist.h miner.h compat.h \
 			  compat/inttypes.h compat/stdbool.h compat/unistd.h \
 			  compat/sys/time.h compat/getopt/getopt.h \
 			  crc32.c hefty1.c \
-			  ccminer.cpp pools.cpp util.cpp bench.cpp bignum.cpp \
+			  ccsolominer.cpp pools.cpp util.cpp bench.cpp bignum.cpp \
 			  api.cpp hashlog.cpp nvml.cpp stats.cpp sysinfos.cpp cuda.cpp \
 			  nvsettings.cpp \
 			  equi/equi-stratum.cpp equi/equi.cpp equi/blake2/blake2bx.cpp \
@@ -84,7 +84,7 @@ ccminer_SOURCES	= elist.h miner.h compat.h \
 			  x11/c11.cu x11/s3.cu x11/sib.cu x11/veltor.cu x11/cuda_streebog.cu
 
 # scrypt
-ccminer_SOURCES += scrypt.cpp scrypt-jane.cpp \
+ccsolominer_SOURCES += scrypt.cpp scrypt-jane.cpp \
     scrypt/blake.cu scrypt/keccak.cu scrypt/sha256.cu \
     scrypt/salsa_kernel.cu scrypt/test_kernel.cu \
     scrypt/fermi_kernel.cu scrypt/kepler_kernel.cu \
@@ -96,23 +96,23 @@ nvml_libs = -ldl
 endif
 
 if HAVE_WINDOWS
-ccminer_SOURCES += compat/winansi.c
+ccsolominer_SOURCES += compat/winansi.c
 endif
 
-ccminer_LDFLAGS  = $(PTHREAD_FLAGS) @CUDA_LDFLAGS@
-ccminer_LDADD    = @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@ @CUDA_LIBS@ @OPENMP_CFLAGS@ @LIBS@ $(nvml_libs)
-ccminer_CPPFLAGS = @LIBCURL_CPPFLAGS@ @OPENMP_CFLAGS@ $(CPPFLAGS) $(PTHREAD_FLAGS) -fno-strict-aliasing $(JANSSON_INCLUDES) $(DEF_INCLUDES) $(nvml_defs)
+ccsolominer_LDFLAGS  = $(PTHREAD_FLAGS) @CUDA_LDFLAGS@
+ccsolominer_LDADD    = @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@ @CUDA_LIBS@ @OPENMP_CFLAGS@ @LIBS@ $(nvml_libs)
+ccsolominer_CPPFLAGS = @LIBCURL_CPPFLAGS@ @OPENMP_CFLAGS@ $(CPPFLAGS) $(PTHREAD_FLAGS) -fno-strict-aliasing $(JANSSON_INCLUDES) $(DEF_INCLUDES) $(nvml_defs)
 
 if HAVE_OSX
-ccminer_CPPFLAGS += -I/usr/local/llvm/lib/clang/4.0.0/include
-ccminer_LDFLAGS += -L/usr/local/llvm/lib
-ccminer_LDADD += -lomp
+ccsolominer_CPPFLAGS += -I/usr/local/llvm/lib/clang/4.0.0/include
+ccsolominer_LDFLAGS += -L/usr/local/llvm/lib
+ccsolominer_LDADD += -lomp
 endif
 
-#ccminer_CPPFLAGS += -DUSE_LIBSODIUM
-#ccminer_LDFLAGS += -Lequi/lib
-#ccminer_LDADD += -lsodium
-ccminer_LDADD += -lcuda
+#ccsolominer_CPPFLAGS += -DUSE_LIBSODIUM
+#ccsolominer_LDFLAGS += -Lequi/lib
+#ccsolominer_LDADD += -lsodium
+ccsolominer_LDADD += -lcuda
 
 nvcc_ARCH :=
 nvcc_ARCH += -gencode=arch=compute_70,code=\"sm_70,compute_70\"
