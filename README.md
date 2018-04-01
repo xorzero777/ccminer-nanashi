@@ -1,5 +1,6 @@
 ccsolominer
-=======
+==========
+
 
 Based on Christian Buchner's &amp; Christian H.'s CUDA project, no more active on github recently.
 
@@ -10,18 +11,20 @@ find a fork of ccminer with better performance or new algorithms? open an issue 
 Fork by tpruvot@github with X14,X15,X17,Blake256,BlakeCoin,Lyra2RE,Skein,ZR5 and others, check the [README.txt](README.txt)
 
 Beanjo55(ccsolominer):
-   GRLC donation address: GVQ1sXh9xDefzFHVmFGPTi6NVHjhEQfa7S
+
+      GRLC donation address: GVQ1sXh9xDefzFHVmFGPTi6NVHjhEQfa7S
    
-   BTC donation address: 13ARVGF6XhJ6ytSrikcbzRfFQhJ5DoLECj
+      BTC donation address: 13ARVGF6XhJ6ytSrikcbzRfFQhJ5DoLECj
    
-   ETH donation address: 0x04955CCE2Cb5e0E4a7a4F6ba96686A25374FB1Bd
+      ETH donation address: 0x04955CCE2Cb5e0E4a7a4F6ba96686A25374FB1Bd
    
-   LTC donation address: LTUdZR9LZWuM5Xi2cLTG8qqbQ3GfLPnoZ2
+      LTC donation address: LTUdZR9LZWuM5Xi2cLTG8qqbQ3GfLPnoZ2
    
-   RVN donation address: RP3qhgGWe6DmDVPaWjERVLHrhRCNYM6jaK
+      RVN donation address: RP3qhgGWe6DmDVPaWjERVLHrhRCNYM6jaK
 
 tpruvot([ccminer](https://github.com/tpruvot/ccminer)):
-    BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+
+      BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
     
 Brian112358 ([Nevermore Miner](https://github.com/brian112358/nevermore-miner))
     
@@ -65,7 +68,6 @@ To rebuild them, you need to clone this repository and its submodules :
 On Linux, you can use the helper ./build.sh (edit it if required)
 
 There is also an old [Tutorial for windows](http://cudamining.co.uk/url/tutorials/id/3) on [CudaMining](http://cudamining.co.uk) website.
-
 
 
 

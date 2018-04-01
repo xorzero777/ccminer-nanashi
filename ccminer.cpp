@@ -1,7 +1,8 @@
 ﻿/*
  * Copyright 2010 Jeff Garzik
  * Copyright 2012-2014 pooler
- * Copyright 2014-2017 tpruvot
+ * Copyright 2014-2018 tpruvot
+ * Copyright 2018 Beanjo55
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -55,7 +56,7 @@
 BOOL WINAPI ConsoleHandler(DWORD);
 #endif
 
-#define PROGRAM_NAME		"ccminer solo"
+#define PROGRAM_NAME		"ccsolominer"
 #define LP_SCANTIME		60
 #define HEAVYCOIN_BLKHDR_SZ		84
 #define MNR_BLKHDR_SZ 80
