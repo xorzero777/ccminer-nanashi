@@ -10,18 +10,20 @@ find a fork of ccminer with better performance or new algorithms? open an issue 
 Fork by tpruvot@github with X14,X15,X17,Blake256,BlakeCoin,Lyra2RE,Skein,ZR5 and others, check the [README.txt](README.txt)
 
 Beanjo55(ccsolominer):
-   GRLC donation address: GVQ1sXh9xDefzFHVmFGPTi6NVHjhEQfa7S
+
+      GRLC donation address: GVQ1sXh9xDefzFHVmFGPTi6NVHjhEQfa7S
    
-   BTC donation address: 13ARVGF6XhJ6ytSrikcbzRfFQhJ5DoLECj
+      BTC donation address: 13ARVGF6XhJ6ytSrikcbzRfFQhJ5DoLECj
    
-   ETH donation address: 0x04955CCE2Cb5e0E4a7a4F6ba96686A25374FB1Bd
+      ETH donation address: 0x04955CCE2Cb5e0E4a7a4F6ba96686A25374FB1Bd
    
-   LTC donation address: LTUdZR9LZWuM5Xi2cLTG8qqbQ3GfLPnoZ2
+      LTC donation address: LTUdZR9LZWuM5Xi2cLTG8qqbQ3GfLPnoZ2
    
-   RVN donation address: RP3qhgGWe6DmDVPaWjERVLHrhRCNYM6jaK
+      RVN donation address: RP3qhgGWe6DmDVPaWjERVLHrhRCNYM6jaK
 
 tpruvot([ccminer](https://github.com/tpruvot/ccminer)):
-    BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+
+      BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
     
 Brian112358 ([Nevermore Miner](https://github.com/brian112358/nevermore-miner))
     
