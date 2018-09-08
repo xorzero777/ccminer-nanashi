@@ -6,7 +6,12 @@
 
 #include "uint256.h"
 
-#include <openssl/opensslv.h>
+#ifdef _WIN32
+# include "compat/curl-for-windows/openssl/openssl/include/openssl/opensslv.h"
+#else
+# include <openssl/opensslv.h>
+#endif
+
 #if OPENSSL_VERSION_NUMBER < 0x10100000L
 #include "compat/bignum_ssl10.hpp"
 #else

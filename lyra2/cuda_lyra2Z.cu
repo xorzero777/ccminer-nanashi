@@ -877,7 +877,8 @@ __host__
 void lyra2Z_cpu_init(int thr_id, uint32_t threads, uint64_t *d_matrix)
 {
 	// just assign the device pointer allocated in main loop
-	cudaMemcpyToSymbol(DMatrix, &d_matrix, sizeof(uint64_t*), 0, cudaMemcpyHostToDevice);
+//	cudaMemcpyToSymbol(DMatrix, &d_matrix, sizeof(uint64_t*), 0, cudaMemcpyHostToDevice);
+	cudaMemcpyToSymbol("DMatrix", &d_matrix, sizeof(uint64_t*), 0, cudaMemcpyHostToDevice);
 	cudaMalloc(&d_GNonces[thr_id], 2 * sizeof(uint32_t));
 	cudaMallocHost(&h_GNonces[thr_id], 2 * sizeof(uint32_t));
 }
