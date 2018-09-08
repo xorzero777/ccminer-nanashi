@@ -128,7 +128,7 @@ its command line interface and options.
                           veltor      use to mine VeltorCoin
                           whirlpool   use to mine Joincoin
                           wildkeccak  use to mine Boolberry (Stratum only)
-						  zcc		  use to mine ZcoinClassic (ZCC)
+                          zcc		  use to mine ZcoinClassic (ZCC)
                           zr5         use to mine ZiftrCoin
 
   -d, --devices         gives a comma separated list of CUDA device IDs
