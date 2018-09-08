@@ -1,0 +1,35 @@
+Ubuntu 16.04.5 LTS
+
+build-essential, etc.
+
+
+1. https://tecadmin.net/install-latest-nvidia-drivers-ubuntu/
+
+2. https://tech.amikelive.com/node-669/guide-installing-cuda-toolkit-9-1-on-ubuntu-16-04/
+
+3. FIX: lyra2/cuda_lyra2Z.cu              `Stack Smashing!!!'
+
+	o
+	o
+	o
+
+__host__
+void lyra2Z_cpu_init(int thr_id, uint32_t threads, uint64_t *d_matrix)
+{
+	// just assign the device pointer allocated in main loop
+//	cudaMemcpyToSymbol(DMatrix, &d_matrix, sizeof(uint64_t*), 0, cudaMemcpyHostToDevice);
+	cudaMemcpyToSymbol("DMatrix", &d_matrix, sizeof(uint64_t*), 0, cudaMemcpyHostToDevice);
+	cudaMalloc(&d_GNonces[thr_id], 2 * sizeof(uint32_t));
+	cudaMallocHost(&h_GNonces[thr_id], 2 * sizeof(uint32_t));
+}
+
+	o
+	o
+	o
+	
+http://horacio9573.no-ip.org/cuda/group__CUDART__MEMORY_gf268fa2004636b6926fdcd3189152a14.html
+
+
+
+
+
