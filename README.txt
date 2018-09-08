@@ -52,6 +52,7 @@ Woodcoin (Double Skein)
 Vanilla (Blake256 8-rounds - double sha256)
 Vertcoin Lyra2RE
 Ziftrcoin (ZR5)
+ZcoinClassic (ZCC)  (Blake256 14-rounds - 80 bytes)
 Boolberry (Wild Keccak)
 Monero (Cryptonight)
 Aeon (Cryptonight-lite)
@@ -127,6 +128,7 @@ its command line interface and options.
                           veltor      use to mine VeltorCoin
                           whirlpool   use to mine Joincoin
                           wildkeccak  use to mine Boolberry (Stratum only)
+						  zcc		  use to mine ZcoinClassic (ZCC)
                           zr5         use to mine ZiftrCoin
 
   -d, --devices         gives a comma separated list of CUDA device IDs

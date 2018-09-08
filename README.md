@@ -1,6 +1,16 @@
-ccsolominer
-==========
+ccminer-solo-zcc
+================
 
+./ccminer -a zcc -o 127.0.0.1:7888 -u <rpcuser> -p <rpcpassword> --coinbase-addr=<zcoin-classic-address>
+
+ - rpcuser: same as rpcuser in $HOME/.zcc/zcc.conf (or windows equivalent)
+ - rpcpassword: same as rpcpassword in $HOME/.zcc/zcc.conf (or windows equivalent)
+ - zcoin-classic-address: wallet address you want block reward sent to
+
+
+
+ccsolominer
+===========
 
 Based on Christian Buchner's &amp; Christian H.'s CUDA project, no more active on github recently.
 
@@ -21,25 +31,6 @@ Beanjo55(ccsolominer):
       LTC donation address: LTUdZR9LZWuM5Xi2cLTG8qqbQ3GfLPnoZ2
    
       RVN donation address: RP3qhgGWe6DmDVPaWjERVLHrhRCNYM6jaK
-
-tpruvot([ccminer](https://github.com/tpruvot/ccminer)):
-
-      BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
-    
-Brian112358 ([Nevermore Miner](https://github.com/brian112358/nevermore-miner))
-    
-- BTC: 1FHLroBZaB74QvQW5mBmAxCNVJNXa14mH5
-
-- RVN: RWoSZX6j6WU6SVTVq5hKmdgPmmrYE9be5R
-
-- ETH: 0x7255ba772ee18bdb8b9af0bdeae2e41f5874fb0b
-
-- DOGE: D7h81HeRVV3xPWL9CqCC2Z6AevG4gBdGxZ
-
-alexis78 (some optimized CUDA kernels for x16r)
-
-- RVN: RYKaoWqR5uahFioNvxabQtEBjNkBmRoRdg
-
 
 A part of the recent algos were originally written by [djm34](https://github.com/djm34) and [alexis78](https://github.com/alexis78).
 
@@ -69,5 +60,27 @@ On Linux, you can use the helper ./build.sh (edit it if required)
 
 There is also an old [Tutorial for windows](http://cudamining.co.uk/url/tutorials/id/3) on [CudaMining](http://cudamining.co.uk) website.
 
+
+
+History:
+--------
+
+tpruvot([ccminer](https://github.com/tpruvot/ccminer)):
+
+      BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+    
+Brian112358 ([Nevermore Miner](https://github.com/brian112358/nevermore-miner))
+    
+- BTC: 1FHLroBZaB74QvQW5mBmAxCNVJNXa14mH5
+
+- RVN: RWoSZX6j6WU6SVTVq5hKmdgPmmrYE9be5R
+
+- ETH: 0x7255ba772ee18bdb8b9af0bdeae2e41f5874fb0b
+
+- DOGE: D7h81HeRVV3xPWL9CqCC2Z6AevG4gBdGxZ
+
+alexis78 (some optimized CUDA kernels for x16r)
+
+- RVN: RYKaoWqR5uahFioNvxabQtEBjNkBmRoRdg
 
 
