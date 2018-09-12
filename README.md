@@ -1,7 +1,7 @@
 ccminer-solo-zcc
 ================
 
-`./ccminer -a zcc -o 127.0.0.1:7888 -u <rpcuser> -p <rpcpassword> --coinbase-addr=<zcoin-classic-address>`
+`./ccminer -a zcc -o 127.0.0.1:7888 -u <rpcuser> -p <rpcpassword> --coinbase-addr=<zcoin-classic-address>` --no-longpoll
 
  - rpcuser: same as rpcuser in $HOME/.zcc/zcc.conf (or windows equivalent)
  - rpcpassword: same as rpcpassword in $HOME/.zcc/zcc.conf (or windows equivalent)
